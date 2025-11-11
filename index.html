@@ -1,1794 +1,1033 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data-Link Layer -MCQ Practice</title>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النقاط المخفية والأسئلة - Data Link Layer</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Inter", Arial, sans-serif;
-        line-height: 1.6;
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        color: #333;
-        padding: 20px;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 15px;
-        padding: 40px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      }
-
-      .header {
-        text-align: center;
-        margin-bottom: 40px;
-        padding: 30px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        color: white;
-      }
-
-      .header h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-      }
-
-      .header p {
-        font-size: 16px;
-        opacity: 0.9;
-      }
-
-      .section-title {
-        font-size: 24px;
-        font-weight: 700;
-        color: #2c3e50;
-        margin: 30px 0 20px 0;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #667eea;
-      }
-
-      .question {
-        background: #f8f9fa;
-        border-left: 4px solid #667eea;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .question-number {
-        font-weight: 700;
-        color: #667eea;
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-
-      .question-text {
-        font-size: 16px;
-        margin-bottom: 15px;
-        font-weight: 600;
-        color: #2c3e50;
-      }
-
-      .options {
-        margin-left: 20px;
-      }
-
-      .option {
-        margin: 10px 0;
-        padding: 12px;
-        cursor: pointer;
-        border-radius: 8px;
-        border: 2px solid transparent;
-        transition: all 0.3s ease;
-      }
-
-      .option:not(.question.answered .option):hover {
-        background: #e9ecef;
-        border-color: #ced4da;
-      }
-
-      .question.answered .option {
-        cursor: default;
-      }
-
-      .option.correct {
-        background-color: #d4edda;
-        border-color: #283fa7;
-        color: #151f57;
-        font-weight: bold;
-      }
-
-      .option.incorrect {
-        background-color: #f8d7da;
-        border-color: #dc3545;
-        color: #721c24;
-        font-weight: bold;
-      }
-
-      .answer {
-        background: #e9ecef;
-        border: 2px solid #adb5bd;
-        padding: 15px;
-        margin-top: 15px;
-        border-radius: 8px;
-        display: none;
-      }
-
-      .answer.show {
-        display: block;
-        animation: fadeIn 0.5s;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        to {
-          opacity: 1;
-        }
-      }
-
-      .answer-label {
-        font-weight: 700;
-        color: #495057;
-        margin-bottom: 5px;
-      }
-
-      .explanation {
-        color: #212529;
-        margin-top: 5px;
-        line-height: 1.6;
-      }
-
-      .show-answers-btn {
-        background: linear-gradient(135deg, #28a745, #20c997);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        font-size: 16px;
-        font-weight: 700;
-        border-radius: 25px;
-        cursor: pointer;
-        margin: 30px auto;
-        display: block;
-        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
-        transition: all 0.3s ease;
-      }
-
-      .show-answers-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
-      }
-
-      .difficulty {
-        display: inline-block;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        margin-left: 10px;
-      }
-
-      .difficulty.easy {
-        background: #d4edda;
-        color: #155724;
-      }
-
-      .difficulty.medium {
-        background: #fff3cd;
-        color: #856404;
-      }
-
-      .difficulty.hard {
-        background: #f8d7da;
-        color: #721c24;
-      }
-
-      .code-snippet {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 15px;
-        border-radius: 8px;
-        font-family: "Courier New", monospace;
-        margin: 10px 0;
-        overflow-x: auto;
-      }
-
-      @media print {
+        
         body {
-          background: white;
+            font-family: 'Cairo', Arial, sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            font-size: 14px;
+            min-height: 100vh;
         }
-
-        .show-answers-btn {
-          display: none;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-
-        .answer {
-          display: block !important;
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(233,30,99,0.3);
         }
-      }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 18px;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .concept-section {
+            margin: 40px 0;
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 6px solid #e91e63;
+            position: relative;
+        }
+        
+        .concept-title {
+            color: #c2185b;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .trick-box {
+            background: linear-gradient(145deg, #fff3e0, #ffe0b2);
+            border: 3px solid #ff9800;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(255,152,0,0.3);
+        }
+        
+        .trick-box::before {
+            content: 'تريكاية';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .hidden-point {
+            background: linear-gradient(145deg, #e8eaf6, #c5cae9);
+            border: 2px solid #3f51b5;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(63,81,181,0.2);
+        }
+        
+        .hidden-point::before {
+            content: 'نقطة مخفية';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #3f51b5;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .question-box {
+            background: linear-gradient(145deg, #e1f5fe, #b3e5fc);
+            border: 2px solid #03a9f4;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(3,169,244,0.2);
+        }
+        
+        .question-number {
+            background: #03a9f4;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .answer-box {
+            background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0 10px 40px;
+            font-size: 13px;
+        }
+        
+        .important-note {
+            background: linear-gradient(145deg, #ffebee, #ffcdd2);
+            border: 2px solid #f44336;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            color: #c62828;
+            font-weight: 600;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(244,67,54,0.2);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .print-btn {
+            background: linear-gradient(145deg, #e91e63, #c2185b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(233,30,99,0.4);
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233,30,99,0.5);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+            }
+            .print-btn {
+                display: none !important;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <div class="header">
-        <h1>📚 Data-Link Layer</h1>
-        <p>Professional MCQ Practice Questions - Chapter 9</p>
-        <p><strong>50 Comprehensive Questions</strong></p>
-      </div>
-
-      <button class="show-answers-btn" onclick="toggleAllExplanations()">
-        🔍 Show All Explanations
-      </button>
-
-      <!-- ========== SECTION 1: BASIC CONCEPTS ========== -->
-      <div class="section-title">
-        Section 1: Basic Concepts & Fundamentals (10 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 1 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          The data-link layer is primarily responsible for:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) End-to-end data delivery across multiple networks
-          </div>
-          <div class="option" data-correct="true">
-            B) Node-to-node data delivery within a single link
-          </div>
-          <div class="option" data-correct="false">
-            C) Application-level data formatting
-          </div>
-          <div class="option" data-correct="false">
-            D) Bit transmission over physical medium
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The data-link layer handles node-to-node communication within a
-            single link, while the network layer handles end-to-end delivery.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 2 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          In networking terminology, what is a "node"?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Only end-user devices like computers and phones
-          </div>
-          <div class="option" data-correct="false">
-            B) Only network infrastructure devices like routers
-          </div>
-          <div class="option" data-correct="true">
-            C) Any device in the network including hosts and routers
-          </div>
-          <div class="option" data-correct="false">
-            D) Only devices with MAC addresses
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            A node refers to any device in the network path, including both end
-            hosts (computers, servers) and intermediate devices (routers,
-            switches).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 3 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which of the following is NOT a service provided by the data-link
-          layer?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) Framing</div>
-          <div class="option" data-correct="false">B) Error control</div>
-          <div class="option" data-correct="true">C) Routing</div>
-          <div class="option" data-correct="false">D) Flow control</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Routing is a network layer function. The data-link layer provides
-            framing, error control, flow control, physical addressing, and
-            access control.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 4 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          The data-link layer is positioned between which two layers in the
-          TCP/IP model?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Application and transport layers
-          </div>
-          <div class="option" data-correct="false">
-            B) Transport and network layers
-          </div>
-          <div class="option" data-correct="true">
-            C) Network and physical layers
-          </div>
-          <div class="option" data-correct="false">
-            D) Physical and presentation layers
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The data-link layer sits between the network layer (above) and the
-            physical layer (below).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 5 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          What is the primary difference between a "link" and a "node"?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Links are wireless, nodes are wired
-          </div>
-          <div class="option" data-correct="true">
-            B) Links are networks connecting nodes, nodes are devices
-          </div>
-          <div class="option" data-correct="false">
-            C) Links operate at physical layer, nodes at data-link layer
-          </div>
-          <div class="option" data-correct="false">
-            D) There is no difference; they are synonymous
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Links are the communication channels (LANs/WANs) between nodes,
-            while nodes are the devices (hosts/routers) that process and forward
-            data.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 6 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          The framing service of the data-link layer is responsible for:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="true">
-            A) Dividing the bit stream into manageable data units called frames
-          </div>
-          <div class="option" data-correct="false">
-            B) Creating IP packets from application data
-          </div>
-          <div class="option" data-correct="false">
-            C) Converting frames into bits for transmission
-          </div>
-          <div class="option" data-correct="false">
-            D) Encrypting data for secure transmission
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Framing involves dividing the data stream into frames with headers
-            and trailers for proper transmission and identification.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 7 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          Flow control in the data-link layer ensures that:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Data is encrypted properly
-          </div>
-          <div class="option" data-correct="true">
-            B) The sender doesn't overwhelm the receiver with data
-          </div>
-          <div class="option" data-correct="false">
-            C) Packets take the shortest route
-          </div>
-          <div class="option" data-correct="false">
-            D) Multiple devices can share the medium equally
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Flow control regulates the rate of data transmission so the receiver
-            can process incoming data without being overwhelmed.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 8 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Which statement best describes the relationship between data-link
-          layer services and the physical layer?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) The data-link layer provides services to the physical layer
-          </div>
-          <div class="option" data-correct="true">
-            B) The data-link layer receives services from the physical layer and
-            provides services to the network layer
-          </div>
-          <div class="option" data-correct="false">
-            C) Both layers operate independently with no service relationship
-          </div>
-          <div class="option" data-correct="false">
-            D) The physical layer provides services to the network layer through
-            the data-link layer
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The data-link layer uses services from the physical layer (bit
-            transmission) and provides services to the network layer (reliable
-            frame delivery).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 9 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Error control at the data-link layer typically involves:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Detecting errors only, never correcting them
-          </div>
-          <div class="option" data-correct="true">
-            B) Detecting errors and requesting retransmission of corrupted
-            frames
-          </div>
-          <div class="option" data-correct="false">
-            C) Preventing all errors from occurring
-          </div>
-          <div class="option" data-correct="false">
-            D) Forwarding all frames regardless of errors
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Error control detects errors using mechanisms like CRC and typically
-            requests retransmission of corrupted frames through protocols like
-            ARQ.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 10 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">Access control is necessary when:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Two devices want to communicate point-to-point
-          </div>
-          <div class="option" data-correct="true">
-            B) Multiple devices share the same transmission medium
-          </div>
-          <div class="option" data-correct="false">
-            C) Data needs to be encrypted
-          </div>
-          <div class="option" data-correct="false">
-            D) Frames need to be numbered sequentially
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Access control (MAC protocols) is needed when multiple devices share
-            a broadcast medium to coordinate who can transmit when, preventing
-            collisions.
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION 2: LINK TYPES ========== -->
-      <div class="section-title">
-        Section 2: Link Types (Point-to-Point vs Broadcast) (8 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 11 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">A point-to-point link connects:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Multiple devices to a shared medium
-          </div>
-          <div class="option" data-correct="true">
-            B) Exactly two devices with a dedicated connection
-          </div>
-          <div class="option" data-correct="false">
-            C) All devices in a broadcast domain
-          </div>
-          <div class="option" data-correct="false">
-            D) Devices across different networks
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            A point-to-point link is a dedicated connection between exactly two
-            devices, with the entire capacity of the medium available to them.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 12 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which of the following is an example of a broadcast link?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) A dedicated fiber connection between two routers
-          </div>
-          <div class="option" data-correct="true">
-            B) A wireless LAN where multiple devices share the air medium
-          </div>
-          <div class="option" data-correct="false">
-            C) A serial cable connection between two computers
-          </div>
-          <div class="option" data-correct="false">
-            D) A direct crossover ethernet cable between two PCs
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            A wireless LAN is a broadcast link where multiple devices share the
-            same medium (air) and need MAC protocols to coordinate access.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 13 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          In a point-to-point link, the MAC sublayer is:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Essential for proper operation
-          </div>
-          <div class="option" data-correct="true">
-            B) Not needed because there's no contention for the medium
-          </div>
-          <div class="option" data-correct="false">
-            C) Only needed for error detection
-          </div>
-          <div class="option" data-correct="false">
-            D) Responsible for routing decisions
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            MAC sublayer handles media access control, which is unnecessary in
-            point-to-point links since only two devices use the dedicated
-            medium.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 14 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          What is the main challenge that necessitates the MAC sublayer in
-          broadcast links but not in point-to-point links?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Error rates are higher in broadcast links
-          </div>
-          <div class="option" data-correct="true">
-            B) Multiple devices compete for access to the shared medium
-          </div>
-          <div class="option" data-correct="false">
-            C) Broadcast links have lower bandwidth
-          </div>
-          <div class="option" data-correct="false">
-            D) Security concerns are greater in broadcast links
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The MAC sublayer coordinates medium access when multiple devices
-            share a broadcast medium, preventing collisions and ensuring fair
-            access.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 15 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which statement about capacity usage is correct?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Point-to-point links always waste capacity
-          </div>
-          <div class="option" data-correct="false">
-            B) Broadcast links provide dedicated capacity to each device
-          </div>
-          <div class="option" data-correct="true">
-            C) Point-to-point links use the entire medium capacity for the two
-            connected devices
-          </div>
-          <div class="option" data-correct="false">
-            D) Broadcast links eliminate the need for protocols
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            In point-to-point links, the entire capacity of the medium is
-            available to the two connected devices without sharing.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 16 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          Traditional Ethernet with a hub is an example of:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) A point-to-point link
-          </div>
-          <div class="option" data-correct="true">B) A broadcast link</div>
-          <div class="option" data-correct="false">
-            C) A full-duplex connection
-          </div>
-          <div class="option" data-correct="false">D) A dedicated link</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Ethernet with a hub is a broadcast link where all devices share the
-            same collision domain and medium.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 17 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          A network administrator must choose between implementing
-          point-to-point links or a broadcast link for connecting devices. Which
-          factor would MOST strongly favor choosing point-to-point links?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Need to minimize cost by sharing infrastructure
-          </div>
-          <div class="option" data-correct="true">
-            B) Requirement for guaranteed dedicated bandwidth between devices
-          </div>
-          <div class="option" data-correct="false">
-            C) Desire to enable easy addition of new devices
-          </div>
-          <div class="option" data-correct="false">
-            D) Need for broadcast communication capability
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Point-to-point links provide dedicated bandwidth and guaranteed
-            capacity, making them ideal when consistent performance is critical.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 18 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          PPP (Point-to-Point Protocol) operates over:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) Broadcast links only</div>
-          <div class="option" data-correct="true">
-            B) Point-to-point links only
-          </div>
-          <div class="option" data-correct="false">
-            C) Both point-to-point and broadcast links
-          </div>
-          <div class="option" data-correct="false">
-            D) Neither, it's a network layer protocol
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            PPP, as its name suggests, is designed specifically for
-            point-to-point links such as dial-up and serial connections.
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION 3: SUBLAYERS ========== -->
-      <div class="section-title">
-        Section 3: DLC and MAC Sublayers (7 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 19 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          The data-link layer is divided into which two sublayers?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) LLC and MAC</div>
-          <div class="option" data-correct="true">B) DLC and MAC</div>
-          <div class="option" data-correct="false">C) Physical and Logical</div>
-          <div class="option" data-correct="false">D) Frame and Packet</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The data-link layer is divided into DLC (Data Link Control) and MAC
-            (Media Access Control) sublayers.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 20 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          The DLC (Data Link Control) sublayer is responsible for:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Only media access control
-          </div>
-          <div class="option" data-correct="true">
-            B) Framing, error control, and flow control
-          </div>
-          <div class="option" data-correct="false">
-            C) Routing packets between networks
-          </div>
-          <div class="option" data-correct="false">
-            D) Physical signal transmission
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            DLC handles framing, error control, and flow control - services
-            needed in all types of links.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 21 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          The MAC sublayer is primarily concerned with:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Error detection and correction
-          </div>
-          <div class="option" data-correct="true">
-            B) Coordinating access to shared broadcast media
-          </div>
-          <div class="option" data-correct="false">
-            C) Converting frames to bits
-          </div>
-          <div class="option" data-correct="false">
-            D) Providing end-to-end reliability
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            MAC (Media Access Control) coordinates access to shared media in
-            broadcast networks, preventing collisions.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 22 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Which sublayer(s) would be present in a dedicated leased line
-          connection between two routers?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) Only MAC sublayer</div>
-          <div class="option" data-correct="true">B) Only DLC sublayer</div>
-          <div class="option" data-correct="false">
-            C) Both DLC and MAC sublayers
-          </div>
-          <div class="option" data-correct="false">
-            D) Neither sublayer is needed
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            A leased line is a point-to-point link that only needs DLC (for
-            framing, error/flow control) but not MAC (no media contention).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 23 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          In an Ethernet LAN, which sublayer adds the MAC address to frames?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) DLC sublayer</div>
-          <div class="option" data-correct="true">B) MAC sublayer</div>
-          <div class="option" data-correct="false">C) Network layer</div>
-          <div class="option" data-correct="false">D) Physical layer</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The MAC sublayer adds physical (MAC) addresses to frames for device
-            identification on the local network.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 24 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          LAN protocols use the same sublayer strategy (DLC and MAC) mentioned
-          in this chapter. This design decision primarily allows for:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Faster data transmission speeds
-          </div>
-          <div class="option" data-correct="true">
-            B) Separation of concerns between link control and media access
-          </div>
-          <div class="option" data-correct="false">
-            C) Elimination of the need for physical addresses
-          </div>
-          <div class="option" data-correct="false">
-            D) Direct communication with the application layer
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Separating DLC and MAC allows each sublayer to focus on specific
-            responsibilities, making the design more modular and maintainable.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 25 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which statement about the DLC sublayer is correct?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) It only operates in broadcast networks
-          </div>
-          <div class="option" data-correct="true">
-            B) It is present in both point-to-point and broadcast links
-          </div>
-          <div class="option" data-correct="false">
-            C) It handles IP addressing
-          </div>
-          <div class="option" data-correct="false">
-            D) It operates at the network layer
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            DLC provides essential services (framing, error/flow control) needed
-            in all link types, both point-to-point and broadcast.
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION 4: MAC ADDRESSING ========== -->
-      <div class="section-title">
-        Section 4: Link-Layer Addressing (MAC Addresses) (10 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 26 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">In Ethernet, a MAC address is:</div>
-        <div class="options">
-          <div class="option" data-correct="false">A) 32 bits long</div>
-          <div class="option" data-correct="true">B) 48 bits long</div>
-          <div class="option" data-correct="false">C) 64 bits long</div>
-          <div class="option" data-correct="false">D) 128 bits long</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Ethernet MAC addresses are 48 bits (6 bytes) long, typically
-            represented as 12 hexadecimal digits.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 27 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which of the following is a valid unicast MAC address?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) A2:34:45:11:92:F1</div>
-          <div class="option" data-correct="true">B) A3:34:45:11:92:F1</div>
-          <div class="option" data-correct="false">C) FF:FF:FF:FF:FF:FF</div>
-          <div class="option" data-correct="false">D) A4:34:45:11:92:F1</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            A unicast address has an odd second digit. A3 (second digit is 3,
-            which is odd) indicates unicast. A2 and A4 have even second digits
-            (multicast).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 28 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Consider the MAC address: AE:7B:3C:12:9D:4F. This address is:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Unicast (individual device)
-          </div>
-          <div class="option" data-correct="true">
-            B) Multicast (group of devices)
-          </div>
-          <div class="option" data-correct="false">
-            C) Broadcast (all devices)
-          </div>
-          <div class="option" data-correct="false">D) Invalid format</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The second digit is E (14 in decimal), which is even, indicating a
-            multicast address. Only check the second hexadecimal digit of the
-            first byte.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 29 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          The broadcast MAC address in Ethernet is:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) 00:00:00:00:00:00</div>
-          <div class="option" data-correct="true">B) FF:FF:FF:FF:FF:FF</div>
-          <div class="option" data-correct="false">C) AA:AA:AA:AA:AA:AA</div>
-          <div class="option" data-correct="false">D) 255.255.255.255</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The broadcast MAC address consists of all 1s in binary, represented
-            as FF:FF:FF:FF:FF:FF in hexadecimal.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 30 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Why do we need both IP addresses and MAC addresses?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) For redundancy in case one system fails
-          </div>
-          <div class="option" data-correct="true">
-            B) IP addresses identify end-to-end destinations; MAC addresses
-            identify next-hop devices
-          </div>
-          <div class="option" data-correct="false">
-            C) MAC addresses are for wired networks; IP addresses are for
-            wireless
-          </div>
-          <div class="option" data-correct="false">
-            D) They serve the same purpose but different vendors prefer
-            different systems
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            IP addresses remain constant for end-to-end communication, while MAC
-            addresses change at each hop to identify the next device in the
-            path.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 31 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          As a packet travels from Host A through Router R1 to Host B, which
-          addresses change at each hop?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Both source and destination IP addresses change
-          </div>
-          <div class="option" data-correct="true">
-            B) Both source and destination MAC addresses change
-          </div>
-          <div class="option" data-correct="false">
-            C) Only the source IP address changes
-          </div>
-          <div class="option" data-correct="false">
-            D) Only the destination MAC address changes
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            MAC addresses change hop-by-hop (both source and destination MAC),
-            while IP addresses remain constant throughout the journey
-            (end-to-end).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 32 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          A multicast MAC address differs from a unicast MAC address in that:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) It is longer (64 bits instead of 48 bits)
-          </div>
-          <div class="option" data-correct="true">
-            B) The second hexadecimal digit is even instead of odd
-          </div>
-          <div class="option" data-correct="false">
-            C) It uses decimal notation instead of hexadecimal
-          </div>
-          <div class="option" data-correct="false">
-            D) It always starts with FF
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The second hex digit in the first byte determines the address type:
-            even for multicast, odd for unicast.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 33 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Which of the following MAC addresses would reach the MOST devices on a
-          local network?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) A3:11:22:33:44:55 (Unicast)
-          </div>
-          <div class="option" data-correct="false">
-            B) A2:11:22:33:44:55 (Multicast)
-          </div>
-          <div class="option" data-correct="true">
-            C) FF:FF:FF:FF:FF:FF (Broadcast)
-          </div>
-          <div class="option" data-correct="false">
-            D) They all reach the same number of devices
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Broadcast (FF:FF:FF:FF:FF:FF) reaches ALL devices, multicast reaches
-            a group, and unicast reaches one specific device.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 34 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">Link-layer addresses are also known as:</div>
-        <div class="options">
-          <div class="option" data-correct="false">A) Logical addresses</div>
-          <div class="option" data-correct="true">
-            B) Physical addresses or MAC addresses
-          </div>
-          <div class="option" data-correct="false">C) Port addresses</div>
-          <div class="option" data-correct="false">D) Domain names</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Link-layer addresses are called physical addresses or MAC (Media
-            Access Control) addresses.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 35 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">
-          MAC addresses are typically represented as:
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Four decimal numbers separated by dots
-          </div>
-          <div class="option" data-correct="true">
-            B) Twelve hexadecimal digits separated by colons
-          </div>
-          <div class="option" data-correct="false">C) Eight binary octets</div>
-          <div class="option" data-correct="false">
-            D) A single 48-digit decimal number
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            MAC addresses are written as 12 hexadecimal digits, often separated
-            by colons (e.g., A3:34:45:11:92:F1) or hyphens.
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION 5: ARP PROTOCOL ========== -->
-      <div class="section-title">
-        Section 5: Address Resolution Protocol (ARP) (10 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 36 <span class="difficulty easy">Easy</span>
-        </div>
-        <div class="question-text">The primary purpose of ARP is to:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Convert MAC addresses to IP addresses
-          </div>
-          <div class="option" data-correct="true">
-            B) Convert IP addresses to MAC addresses
-          </div>
-          <div class="option" data-correct="false">
-            C) Route packets between networks
-          </div>
-          <div class="option" data-correct="false">
-            D) Encrypt data for secure transmission
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP (Address Resolution Protocol) maps IP addresses to MAC
-            addresses, allowing devices to communicate on the same network.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 37 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">An ARP request is sent as a:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Unicast message to the destination device
-          </div>
-          <div class="option" data-correct="true">
-            B) Broadcast message to all devices on the network
-          </div>
-          <div class="option" data-correct="false">
-            C) Multicast message to a group of routers
-          </div>
-          <div class="option" data-correct="false">
-            D) Anycast message to the nearest device
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP requests are broadcast (FF:FF:FF:FF:FF:FF) to all devices on the
-            local network so the device with the target IP can respond.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 38 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">An ARP reply is sent as a:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Broadcast message to all devices
-          </div>
-          <div class="option" data-correct="true">
-            B) Unicast message to the requesting device
-          </div>
-          <div class="option" data-correct="false">
-            C) Multicast message to all routers
-          </div>
-          <div class="option" data-correct="false">
-            D) It doesn't send a reply; devices listen passively
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP replies are unicast directly to the device that sent the
-            request, since the replying device now knows the requester's MAC
-            address.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 39 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Host A (IP: 192.168.1.10, MAC: AA:AA:AA:AA:AA:AA) wants to send data
-          to Host B (IP: 192.168.1.20) on the same network but doesn't know Host
-          B's MAC address. What happens?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Host A sends data directly using only the IP address
-          </div>
-          <div class="option" data-correct="true">
-            B) Host A broadcasts an ARP request asking "Who has 192.168.1.20?"
-          </div>
-          <div class="option" data-correct="false">
-            C) Host A asks the router to forward the packet
-          </div>
-          <div class="option" data-correct="false">
-            D) The communication fails; MAC address must be known in advance
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Host A broadcasts an ARP request to discover Host B's MAC address.
-            Host B responds with its MAC address, and then communication
-            proceeds.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 40 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">The ARP cache (table) stores:</div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) IP-to-domain name mappings
-          </div>
-          <div class="option" data-correct="true">
-            B) IP-to-MAC address mappings
-          </div>
-          <div class="option" data-correct="false">
-            C) MAC-to-port number mappings
-          </div>
-          <div class="option" data-correct="false">
-            D) Router-to-network mappings
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The ARP cache stores recently resolved IP-to-MAC address mappings to
-            avoid repeated ARP requests for the same hosts.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 41 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">ARP operates only within:</div>
-        <div class="options">
-          <div class="option" data-correct="false">A) The entire Internet</div>
-          <div class="option" data-correct="true">
-            B) A single local network (broadcast domain)
-          </div>
-          <div class="option" data-correct="false">
-            C) Between different autonomous systems
-          </div>
-          <div class="option" data-correct="false">
-            D) Across all VLANs in an organization
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP only works within a single local network/broadcast domain. For
-            destinations on different networks, packets are sent to the default
-            gateway.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 42 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          If Host A wants to send data to Host B on a different network, what
-          MAC address will Host A use as the destination in the frame?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Host B's MAC address (obtained via ARP)
-          </div>
-          <div class="option" data-correct="true">
-            B) The default gateway's MAC address
-          </div>
-          <div class="option" data-correct="false">
-            C) A broadcast MAC address
-          </div>
-          <div class="option" data-correct="false">D) Its own MAC address</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            When the destination is on a different network, the frame is sent to
-            the default gateway (router), which will forward it toward the
-            destination.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 43 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          What command can be used to view the ARP cache on most operating
-          systems?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) ipconfig /all</div>
-          <div class="option" data-correct="true">B) arp -a</div>
-          <div class="option" data-correct="false">C) netstat -r</div>
-          <div class="option" data-correct="false">D) ping -t</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The "arp -a" command displays the ARP cache, showing IP-to-MAC
-            address mappings stored on the device.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 44 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          In the ARP packet structure, which fields are included?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Only source and destination IP addresses
-          </div>
-          <div class="option" data-correct="false">
-            B) Only source and destination MAC addresses
-          </div>
-          <div class="option" data-correct="true">
-            C) Both IP and MAC addresses for sender and target, plus operation
-            type
-          </div>
-          <div class="option" data-correct="false">
-            D) Only the target IP address being queried
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP packets contain sender's IP and MAC, target's IP and MAC
-            (unknown in request), hardware/protocol types, and operation code
-            (request/reply).
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 45 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Why do ARP cache entries have a limited lifetime (typically 20
-          minutes)?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) To save memory space</div>
-          <div class="option" data-correct="true">
-            B) To allow for changes in network topology or device replacements
-          </div>
-          <div class="option" data-correct="false">
-            C) To prevent ARP spoofing attacks
-          </div>
-          <div class="option" data-correct="false">
-            D) Because MAC addresses change frequently
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Entries expire to handle network changes like device replacements,
-            IP reassignments, or network reconfigurations, ensuring mappings
-            stay current.
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== SECTION 6: SCENARIO-BASED QUESTIONS ========== -->
-      <div class="section-title">
-        Section 6: Scenario-Based and Application Questions (5 Questions)
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 46 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          Consider the following scenario:<br />
-          Alice (IP: 10.0.0.5, MAC: A1) sends a packet to Bob (IP: 172.16.0.10,
-          MAC: B1)<br />
-          Path: Alice → Router R1 (IP1: 10.0.0.1, MAC: R1-1 | IP2: 192.168.1.1,
-          MAC: R1-2) → Router R2 (IP1: 192.168.1.2, MAC: R2-1 | IP2: 172.16.0.1,
-          MAC: R2-2) → Bob<br /><br />
-          What are the source and destination MAC addresses in the frame as it
-          travels from R1 to R2?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Source: A1, Destination: B1
-          </div>
-          <div class="option" data-correct="false">
-            B) Source: R1-1, Destination: R2-2
-          </div>
-          <div class="option" data-correct="true">
-            C) Source: R1-2, Destination: R2-1
-          </div>
-          <div class="option" data-correct="false">
-            D) Source: A1, Destination: R2-1
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            On the link between R1 and R2, R1 uses its outgoing interface MAC
-            (R1-2) as source, and R2's incoming interface MAC (R2-1) as
-            destination. IP addresses remain Alice→Bob.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 47 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          A packet travels through 4 routers before reaching its destination.
-          How many different sets of MAC addresses will be used throughout this
-          journey?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) 1 set (MAC addresses don't change)
-          </div>
-          <div class="option" data-correct="false">
-            B) 4 sets (one per router)
-          </div>
-          <div class="option" data-correct="true">
-            C) 5 sets (one per link/hop)
-          </div>
-          <div class="option" data-correct="false">
-            D) 8 sets (source and destination change separately)
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            With 4 routers between source and destination, there are 5 links
-            total: source→R1, R1→R2, R2→R3, R3→R4, R4→destination. Each link
-            uses different MAC addresses.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 48 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          A network has 100 devices. Device A needs to communicate with Device B
-          for the first time. Assuming no prior ARP cache entries, how many
-          devices will receive the ARP request?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) 1 device (only Device B)
-          </div>
-          <div class="option" data-correct="false">
-            B) 2 devices (Device A and B)
-          </div>
-          <div class="option" data-correct="true">
-            C) 99 devices (all except Device A)
-          </div>
-          <div class="option" data-correct="false">
-            D) 100 devices (all devices including A)
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            ARP requests are broadcast to all devices on the network except the
-            sender. All 99 other devices receive it, but only Device B (matching
-            IP) responds.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 49 <span class="difficulty medium">Medium</span>
-        </div>
-        <div class="question-text">
-          Which layer is responsible for ensuring a packet travels the correct
-          end-to-end path across multiple networks?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">A) Physical layer</div>
-          <div class="option" data-correct="false">B) Data-link layer</div>
-          <div class="option" data-correct="true">C) Network layer</div>
-          <div class="option" data-correct="false">D) Transport layer</div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            The network layer (using IP) handles end-to-end routing across
-            multiple networks. The data-link layer only handles node-to-node
-            delivery within single links.
-          </div>
-        </div>
-      </div>
-
-      <div class="question">
-        <div class="question-number">
-          Question 50 <span class="difficulty hard">Hard</span>
-        </div>
-        <div class="question-text">
-          A company's network uses both Ethernet (broadcast) and leased lines
-          (point-to-point). A network engineer is troubleshooting connectivity
-          issues. On which type of link would collisions be a potential problem?
-        </div>
-        <div class="options">
-          <div class="option" data-correct="false">
-            A) Only on the leased lines
-          </div>
-          <div class="option" data-correct="true">
-            B) Only on the Ethernet segments
-          </div>
-          <div class="option" data-correct="false">C) On both equally</div>
-          <div class="option" data-correct="false">
-            D) On neither; modern networks don't have collisions
-          </div>
-        </div>
-        <div class="answer">
-          <div class="answer-label">✅ Explanation:</div>
-          <div class="explanation">
-            Collisions occur on broadcast media (like Ethernet with hubs) where
-            multiple devices share the medium. Point-to-point leased lines have
-            dedicated connections with no contention.
-          </div>
-        </div>
-      </div>
-
-      <button
-        class="show-answers-btn"
-        onclick="window.print()"
-        style="margin-top: 20px"
-      >
-        🖨️ Print Questions & Answers
-      </button>
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const options = document.querySelectorAll(".option");
-        options.forEach((option) => {
-          option.addEventListener("click", handleOptionClick);
-        });
-      });
-
-      function handleOptionClick(event) {
-        const selectedOption = event.currentTarget;
-        const questionElement = selectedOption.closest(".question");
-
-        // Prevent re-answering
-        if (questionElement.classList.contains("answered")) {
-          return;
-        }
-
-        questionElement.classList.add("answered");
-
-        const isCorrect = selectedOption.dataset.correct === "true";
-
-        if (isCorrect) {
-          selectedOption.classList.add("correct");
-        } else {
-          selectedOption.classList.add("incorrect");
-          // Find and highlight the correct answer
-          const correctOption = questionElement.querySelector(
-            '.option[data-correct="true"]'
-          );
-          if (correctOption) {
-            correctOption.classList.add("correct");
-          }
-        }
-
-        // Show the explanation div automatically after an answer is given
-        const answerExplanation = questionElement.querySelector(".answer");
-        if (answerExplanation) {
-          answerExplanation.classList.add("show");
-        }
-      }
-
-      // Function for the "Show All Explanations" button
-      function toggleAllExplanations() {
-        const answers = document.querySelectorAll(".answer");
-        const button = document.querySelector(".show-answers-btn");
-
-        // Check if the first answer is already visible to determine the state
-        const isShowing = answers[0] && answers[0].classList.contains("show");
-
-        answers.forEach((answer) => {
-          if (isShowing) {
-            // This logic is tricky with dynamic answers. Let's just always show them.
-            answer.classList.remove("show");
-          } else {
-            answer.classList.add("show");
-          }
-        });
-
-        // Update button text based on the new state
-        if (isShowing) {
-          button.textContent = "🔍 Show All Explanations";
-        } else {
-          button.textContent = "🙈 Hide All Explanations";
-        }
-      }
-    </script>
-  </body>
-</html>
-
-
+        <div class="header">
+            <h1>النقاط المخفية والتريكايات - Data Link Layer</h1>
+            <p>أسئلة صعبة ونقاط ما بين السطور مش موجودة في الشرح العادي</p>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <button class="print-btn" onclick="window.print()">اطبع كـ PDF</button>
+        </div>
+
+        <!-- النقطة المخفية 1 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 1: ليه قالوا "glued together"؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "The Internet is a combination of networks glued together"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - كلمة "glued" معناها "ملزوقين" مش متوصلين عادي<br>
+                - ده معناه إن الشبكات دي أصلاً مستقلة وكل واحدة ليها تكنولوجيا مختلفة<br>
+                - Routers والـ Switches هما الـ "لاصق" (glue) اللي بيوحد الشبكات دي<br>
+                - يعني ممكن يكون عندك Ethernet في مكان، WiFi في مكان، Fiber في مكان تالت<br>
+                - كلهم بيتوصلوا مع بعض رغم اختلافهم
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية:</strong><br>
+                لو جالك سؤال: "ليه الإنترنت محتاج Routers؟"<br>
+                الإجابة الغلط: "علشان يوصل الشبكات ببعض" (ده سطحي)<br>
+                الإجابة الصح: "علشان يربط شبكات مختلفة التكنولوجيا ويخليها تفهم بعض ويعمل translation بين البروتوكولات المختلفة"
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">1</div>
+                <strong>إيه الفرق بين Switch و Router في سياق "gluing networks"؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - Switch: بيربط أجهزة على نفس الشبكة (Same network, same technology)<br>
+                    - Router: بيربط شبكات مختلفة (Different networks, can be different technologies)<br>
+                    - Switch شغال على Layer 2 (MAC Addresses)<br>
+                    - Router شغال على Layer 3 (IP Addresses)
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">2</div>
+                <strong>لو عندك شبكة Ethernet وشبكة WiFi، مين المسؤول عن ربطهم؟ ليه؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    Router (أو Access Point بوظيفة Router)<br>
+                    لأن دول تكنولوجيتين مختلفتين محتاجين Layer 3 routing علشان يتكلموا
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">3</div>
+                <strong>هل ممكن يكون في إنترنت من غير Routers؟ ليه؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    لا، مستحيل<br>
+                    - الإنترنت بطبيعته عبارة عن شبكات متعددة<br>
+                    - محتاجين Routers علشان ينقلوا الـ Packets بين الشبكات دي<br>
+                    - من غير Routers كل شبكة هتفضل معزولة
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 2 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 2: Node-to-Node vs End-to-End</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "Communication at the data-link layer is node-to-node"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - Data Link Layer مش شايفة الصورة الكبيرة خالص<br>
+                - كل اللي يهمها الجهاز اللي قدامها مباشرة<br>
+                - مش عارفة حاجة عن المصدر الأصلي أو الوجهة النهائية<br>
+                - ده معناه إن الـ Frame بيتعمل rebuild في كل Router<br>
+                - MAC Addresses بتتغير في كل hop، لكن IP بيفضل ثابت
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية الخطيرة:</strong><br>
+                سؤال: "هل MAC Address بيتغير أثناء نقل البيانات؟"<br>
+                - لو قصدك الـ Frame نفسه: أيوه بيتغير في كل hop<br>
+                - لو قصدك MAC Address بتاع الجهاز نفسه: لا طبعاً ثابت<br>
+                الطلبة بتلخبط في السؤال ده جداً!
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">4</div>
+                <strong>لو Alice بعتت Frame لـ Bob عبر 3 Routers، كام Frame هيتعمل في الرحلة؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    4 Frames مختلفين!<br>
+                    - Frame 1: من Alice لـ R1<br>
+                    - Frame 2: من R1 لـ R2<br>
+                    - Frame 3: من R2 لـ R3<br>
+                    - Frame 4: من R3 لـ Bob<br>
+                    كل واحد له MAC Addresses مختلفة
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">5</div>
+                <strong>إيه اللي بيفضل ثابت في الرحلة من Alice لـ Bob؟ وإيه اللي بيتغير؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>ثابت:</strong><br>
+                    - IP Source (Alice)<br>
+                    - IP Destination (Bob)<br>
+                    - الـ Data نفسه<br><br>
+                    
+                    <strong>بيتغير:</strong><br>
+                    - Source MAC Address<br>
+                    - Destination MAC Address<br>
+                    - الـ Frame Header كله<br>
+                    - الـ FCS (Frame Check Sequence)
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">6</div>
+                <strong>ليه Data Link Layer مابتشوفش الصورة الكبيرة؟ إيه الحكمة من ده؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - Separation of Concerns: كل طبقة تركز في شغلها بس<br>
+                    - Scalability: لو Data Link عرفت كل حاجة هتبقى معقدة جداً<br>
+                    - Flexibility: نقدر نغير التكنولوجيا في كل link من غير ما نأثر على الباقي<br>
+                    - Efficiency: كل hop يهتم بس بتوصيل الـ Frame للـ hop التالي بنجاح
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 3 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 3: الفرق بين Node و Host</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "refer to the two end hosts and the routers as nodes"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - Host = جهاز في البداية أو النهاية (End device)<br>
+                - Node = أي جهاز في المسار (Host أو Router)<br>
+                - يعني كل Host هو Node، لكن مش كل Node هو Host<br>
+                - الـ Router يعتبر Node لكن مش Host<br>
+                - Switch ممكن يتعتبر Node في بعض السياقات
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية:</strong><br>
+                سؤال امتحان شهير: "هل الـ Router يعتبر Host؟"<br>
+                - الإجابة: لا<br>
+                - Router هو intermediate device مش end device<br>
+                - Hosts هما الأجهزة اللي بتولد أو بتستقبل البيانات النهائية<br>
+                - Router بس بينقل البيانات من مكان لمكان
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">7</div>
+                <strong>في الرسمة اللي فيها 6 nodes، كام منهم Hosts؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    2 Hosts بس (الأول والأخير)<br>
+                    - الباقي (4 nodes) هما Routers<br>
+                    - Hosts = End devices<br>
+                    - Routers = Intermediate devices
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">8</div>
+                <strong>هل الـ Switch يعتبر Node؟ ليه؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - تقنياً: نعم، لأنه جهاز على الشبكة<br>
+                    - لكن في سياق الـ Slides دي: لا<br>
+                    - السلايدات بتعتبر Node = Host أو Router<br>
+                    - Switch شغال على Layer 2 بس، مش بيعمل routing<br>
+                    - في السياق ده الـ Switch جزء من الـ Link مش Node منفصل
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">9</div>
+                <strong>ممكن يكون عندنا Node مش Host ومش Router؟ اديني مثال.</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    نعم، مثلاً:<br>
+                    - Firewall<br>
+                    - Load Balancer<br>
+                    - Proxy Server<br>
+                    - Gateway<br>
+                    كلهم Nodes لأنهم أجهزة على الشبكة، لكن مش Hosts ولا Routers بالمعنى التقليدي
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 4 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 4: ليه Link مش Connection؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايدات استخدمت كلمة "Link" مش "Connection"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - Link = الوسط الفيزيائي + البروتوكول<br>
+                - Connection = علاقة منطقية بين جهازين<br>
+                - Link ممكن يكون فيه connections كتير<br>
+                - Link هو المورد المشترك، Connection هو الاستخدام<br>
+                - في Point-to-Point: link واحد = connection واحد<br>
+                - في Broadcast: link واحد = connections كتير محتملة
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">10</div>
+                <strong>إيه الفرق بين Point-to-Point Link و Broadcast Link من ناحية عدد الـ Connections؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>Point-to-Point:</strong><br>
+                    - Link واحد، Connection واحد ممكن<br>
+                    - بين جهازين بس<br>
+                    - مثال: PPP, HDLC<br><br>
+                    
+                    <strong>Broadcast:</strong><br>
+                    - Link واحد، Connections كتير ممكنة<br>
+                    - أي جهاز يقدر يكلم أي جهاز<br>
+                    - مثال: Ethernet, WiFi
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">11</div>
+                <strong>في Broadcast Link، كل الأجهزة بتشوف كل الـ Frames؟ ده أمان ولا مشكلة؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - نعم، كل الأجهزة بتشوف كل الـ Frames<br>
+                    - ده مشكلة أمان محتملة (Sniffing attacks)<br>
+                    - علشان كده محتاجين Encryption على الطبقات الأعلى<br>
+                    - الجهاز المفروض يتجاهل الـ Frames اللي مش ليه<br>
+                    - لكن Hacker ممكن يحط الـ NIC في Promiscuous Mode ويشوف كل حاجة
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">12</div>
+                <strong>ليه Point-to-Point أسرع من Broadcast رغم إن الاتنين على نفس الـ Medium؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - Point-to-Point: مافيش تنافس على الوسط، الجهازين يستخدموه براحتهم<br>
+                    - Broadcast: فيه تنافس، محتاج CSMA/CD أو CSMA/CA<br>
+                    - Broadcast: ممكن يحصل Collisions<br>
+                    - Point-to-Point: مافيش Collisions أصلاً<br>
+                    - Point-to-Point: مافيش Overhead من البروتوكولات المعقدة
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 5 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 5: DLC vs MAC - التقسيم الخفي</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "LAN protocols actually use the same strategy"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - التقسيم لـ DLC و MAC مش مجرد تقسيم نظري<br>
+                - ده فعلاً موجود في IEEE 802 standards<br>
+                - DLC = LLC (Logical Link Control) في IEEE<br>
+                - MAC = MAC Layer في IEEE<br>
+                - Ethernet مثلاً بيستخدم التقسيم ده فعلاً<br>
+                - ده معناه إن ممكن يكون عندك نفس الـ LLC على أكتر من MAC
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية الخفية:</strong><br>
+                السلايد مااتكلمش بوضوح عن إن:<br>
+                - LLC (802.2) ممكن يشتغل فوق Ethernet (802.3)<br>
+                - أو فوق Token Ring (802.5)<br>
+                - أو فوق WiFi (802.11)<br>
+                - ده معناه إن عندك Flexibility في اختيار الـ MAC من غير ما تغير الـ LLC
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">13</div>
+                <strong>إيه الفايدة من تقسيم Data Link لـ DLC و MAC؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - Modularity: فصل المسؤوليات<br>
+                    - Flexibility: تغيير الـ MAC من غير ما نمس الـ DLC<br>
+                    - Reusability: نفس الـ LLC ينفع مع MACs مختلفة<br>
+                    - Easier maintenance: لو في مشكلة نعرف هي في أنهي طبقة<br>
+                    - Standardization: IEEE قدرت تعمل standards منفصلة لكل واحدة
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">14</div>
+                <strong>هل كل Data Link Protocols بتستخدم التقسيم لـ DLC و MAC؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - لا، مش كلهم<br>
+                    - LANs زي Ethernet و WiFi: نعم<br>
+                    - Point-to-Point protocols زي PPP: لا<br>
+                    - PPP مثلاً مابيحتاجش MAC layer لأن مافيش shared medium<br>
+                    - التقسيم ده مهم بس لما يكون في shared medium
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">15</div>
+                <strong>DLC بتعمل Flow Control، طب MAC بتعمل إيه بالضبط؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>MAC Layer مسؤول عن:</strong><br>
+                    - Media Access Control: تنظيم مين يستخدم الوسط امتى<br>
+                    - Framing: تجميع البيانات في Frames<br>
+                    - Addressing: إضافة MAC Addresses<br>
+                    - Error Detection: حساب FCS<br><br>
+                    
+                    <strong>DLC Layer مسؤول عن:</strong><br>
+                    - Flow Control: تنظيم سرعة الإرسال<br>
+                    - Error Control: إعادة إرسال الـ Frames الغلط (في بعض البروتوكولات)<br>
+                    - Link Management: إدارة الاتصال
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 6 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 6: ليه MAC Address 48 bits بالضبط؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "48 bits" لكن ماقالش ليه<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - 48 bits = 6 bytes = 281 trillion عنوان ممكن<br>
+                - ده عدد كافي لكل جهاز في العالم يكون له عنوان فريد<br>
+                - أول 24 bits (3 bytes) = OUI (Organizationally Unique Identifier) للشركة المصنعة<br>
+                - آخر 24 bits = Serial number للجهاز<br>
+                - IEEE بتبيع الـ OUIs للشركات المصنعة<br>
+                - الشركة تستخدم الـ 24 bits الباقية لترقيم منتجاتها
+            </div>
+            
+            <div class="trick-box">
+                <strong>تريكاية خطيرة:</strong><br>
+                السلايد قال "second digit needs to be odd for unicast"<br>
+                - ده مش الـ digit التاني في العنوان كله!<br>
+                - ده الـ digit التاني في أول Byte!<br>
+                - يعني في A3:34:45:11:92:F1<br>
+                - الـ 3 هو الـ digit التاني<br>
+                - لو 3 (فردي) = Unicast<br>
+                - لو 2 (زوجي) = Multicast
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">16</div>
+                <strong>ليه مااستخدموش 32 bits زي IP Address؟ أو 64 bits؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>ليه مش 32 bits:</strong><br>
+                    - 32 bits = 4 billion عنوان بس<br>
+                    - ده مش كفاية مع زيادة عدد الأجهزة<br>
+                    - IPv4 نفسها عانت من المشكلة دي<br><br>
+                    
+                    <strong>ليه مش 64 bits:</strong><br>
+                    - 48 bits كانت كفاية لما اتعمل Ethernet سنة 1980<br>
+                    - زيادة العدد يزود الـ overhead في كل Frame<br>
+                    - 48 bits = توازن بين العدد الكافي والـ efficiency<br>
+                    - لحد دلوقتي مانفدناش من MAC Addresses
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">17</div>
+                <strong>حدد نوع كل MAC Address:</strong><br>
+                A) B2:34:56:78:9A:BC<br>
+                B) FF:FF:FF:FF:FF:FF<br>
+                C) 01:00:5E:00:00:01<br>
+                D) A3:45:67:89:AB:CD
+                <div class="answer-box">
+                    <strong>الإجابات:</strong><br>
+                    A) Multicast (B2 - الرقم التاني 2 زوجي)<br>
+                    B) Broadcast (كله Fs)<br>
+                    C) Multicast (01 - الرقم التاني 1 لكن bit الأول 0 و bit التاني 1 = multicast)<br>
+                    D) Unicast (A3 - الرقم التاني 3 فردي)
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">18</div>
+                <strong>هل ممكن جهازين يكون عندهم نفس الـ MAC Address؟ إيه اللي يحصل؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>نظرياً:</strong> لا، مفروض كل MAC فريد<br><br>
+                    
+                    <strong>عملياً:</strong> نعم ممكن يحصل:<br>
+                    - أخطاء في التصنيع<br>
+                    - MAC Spoofing (تزوير العنوان)<br>
+                    - Virtual Machines ممكن تولد نفس الـ MAC<br><br>
+                    
+                    <strong>اللي يحصل:</strong><br>
+                    - Conflict على الشبكة<br>
+                    - الـ Frames ممكن تروح للجهاز الغلط<br>
+                    - مشاكل في الاتصال<br>
+                    - الـ Switch يتلخبط في الـ MAC Table
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 7 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 7: ليه محتاجين IP و MAC مع بعض؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال "we cannot make a datagram reach its destination using only IP addresses"<br><br>
+                
+                <strong>المعنى العميق:</strong><br>
+                - IP Address = عنوان منطقي، بيتغير، hierarchical<br>
+                - MAC Address = عنوان فيزيائي، ثابت، flat<br>
+                - IP محتاج للـ routing بين الشبكات<br>
+                - MAC محتاج للتوصيل المباشر في الشبكة المحلية<br>
+                - الاتنين مكملين بعض مش بديلين لبعض
+            </div>
+            
+            <div class="trick-box">
+                <strong>السؤال الخادع:</strong><br>
+                "ليه مانستخدمش IP Address بس في كل حاجة؟"<br>
+                الإجابة الغلط: "علشان MAC أسرع"<br>
+                الإجابة الصح: "علشان في الشبكة المحلية محتاجين عنوان فيزيائي يشتغل على Layer 2 من غير ما نحتاج routing، وعلشان نقدر نغير IP من غير ما نغير الهاردوير"
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">19</div>
+                <strong>إيه اللي يحصل لو حذفنا MAC Addresses واستخدمنا IP بس؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    مشاكل كتير:<br>
+                    - مش هنقدر نعمل switching على Layer 2<br>
+                    - كل حاجة هتحتاج Router حتى في نفس الشبكة<br>
+                    - Broadcast في الشبكة المحلية مش هيشتغل<br>
+                    - لو غيرت الـ IP هتحتاج تغير الهاردوير<br>
+                    - مافيش separation بين Layer 2 و Layer 3<br>
+                    - التكلفة هتزيد (كل حاجة تحتاج router)
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">20</div>
+                <strong>إيه اللي يحصل لو حذفنا IP Addresses واستخدمنا MAC بس؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    كارثة:<br>
+                    - مافيش routing ممكن (MAC is flat, not hierarchical)<br>
+                    - كل Router يحتاج يعرف كل MAC في العالم<br>
+                    - Routing tables هتكون ضخمة جداً<br>
+                    - مافيش subnetting أو network organization<br>
+                    - مش هنقدر ننقل جهاز من شبكة لشبكة بسهولة<br>
+                    - الإنترنت مش هيقدر يشتغل أصلاً
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">21</div>
+                <strong>ليه IP Address بيتغير لكن MAC Address ثابت؟ إيه الحكمة؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>MAC Address ثابت:</strong><br>
+                    - مرتبط بالـ Hardware (NIC)<br>
+                    - بيتحرق في الشريحة من المصنع<br>
+                    - يعرف الجهاز فيزيائياً<br>
+                    - مش محتاج يتغير لأنه مش hierarchical<br><br>
+                    
+                    <strong>IP Address بيتغير:</strong><br>
+                    - منطقي، مش فيزيائي<br>
+                    - بيعتمد على مكان الجهاز في الشبكة<br>
+                    - لو نقلت الجهاز لشبكة تانية، محتاج IP جديد<br>
+                    - بيساعد في الـ routing والتنظيم
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 8 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 8: ARP Cache والتوقيت</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد ماتكلمش عن ARP Cache لكن ذكر إن ARP بيحصل "Anytime"<br><br>
+                
+                <strong>المعنى المخفي:</strong><br>
+                - لو كل مرة نحتاج MAC نعمل ARP Request = waste of bandwidth<br>
+                - علشان كده في حاجة اسمها ARP Cache (ARP Table)<br>
+                - الجهاز بيحفظ الـ IP-to-MAC mappings<br>
+                - الـ entries دي بتنتهي صلاحيتها بعد وقت معين (عادة 2-20 دقيقة)<br>
+                - لو الـ entry موجودة في الـ Cache، مش هنعمل ARP Request تاني
+            </div>
+            
+            <div class="trick-box">
+                <strong>تريكاية مهمة:</strong><br>
+                سؤال: "كل Frame محتاج ARP Request؟"<br>
+                - الإجابة: لا!<br>
+                - أول مرة بس نحتاج ARP<br>
+                - بعد كده نستخدم الـ Cache<br>
+                - لو الـ entry expired، نعمل ARP تاني<br>
+                - ده بيوفر bandwidth كتير جداً
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">22</div>
+                <strong>Alice عايزة تبعت 1000 Frame لـ Bob. كام ARP Request هتحتاج؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    واحد بس! (في الأغلب)<br>
+                    - أول Frame: ARP Request<br>
+                    - باقي الـ 999 Frame: من الـ Cache<br>
+                    - إلا لو الـ Cache entry انتهت في النص، وقتها ممكن تحتاج ARP تاني
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">23</div>
+                <strong>ليه ARP Cache Entries بتنتهي صلاحيتها؟ ليه مانخليهاش دايمة؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    أسباب مهمة:<br>
+                    - الأجهزة ممكن تطفي أو تسيب الشبكة<br>
+                    - الـ IP Address ممكن يتغير (DHCP)<br>
+                    - الـ NIC ممكن يتغير<br>
+                    - لو entry قديم وغلط هيسبب مشاكل<br>
+                    - Memory management: مش عايزين cache كبير جداً<br>
+                    - Security: منع ARP poisoning attacks من الاستمرار طويل
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">24</div>
+                <strong>إيه الفرق بين Gratuitous ARP و Normal ARP؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>Normal ARP:</strong><br>
+                    - بسأل عن MAC address لـ IP معين<br>
+                    - Sender و Target مختلفين<br><br>
+                    
+                    <strong>Gratuitous ARP:</strong><br>
+                    - الجهاز بيسأل عن نفسه!<br>
+                    - Sender IP = Target IP<br>
+                    - الهدف: إعلان وجود الجهاز<br>
+                    - أو كشف لو في IP conflict<br>
+                    - أو تحديث ARP caches في الأجهزة التانية
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 9 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 9: ARP Security Issues</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد ماتكلمش عن الأمان خالص<br><br>
+                
+                <strong>الخطر المخفي:</strong><br>
+                - ARP مافيهوش authentication<br>
+                - أي جهاز يقدر يبعت ARP Reply حتى لو ماحدش سأله<br>
+                - ده اسمه ARP Spoofing أو ARP Poisoning<br>
+                - Hacker يقدر يخلي كل الـ traffic يعدي عليه<br>
+                - Man-in-the-Middle attack سهل جداً بسبب ARP
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية الخطيرة:</strong><br>
+                ARP Request = Broadcast<br>
+                ARP Reply = Unicast<br>
+                لكن مافيش حاجة تمنع جهاز يبعت Reply بدون ما يستقبل Request!<br>
+                ده الثغرة الأمنية الأساسية في ARP
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">25</div>
+                <strong>اشرح كيف يحصل ARP Poisoning Attack بالتفصيل.</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>السيناريو:</strong><br>
+                    - Alice (192.168.1.10) عايزة تكلم Bob (192.168.1.20)<br>
+                    - Hacker (192.168.1.15) عايز يتجسس<br><br>
+                    
+                    <strong>الخطوات:</strong><br>
+                    1. Hacker يبعت Fake ARP Reply لـ Alice يقول: "Bob's MAC is Hacker's MAC"<br>
+                    2. Alice تحدث الـ ARP Cache بتاعها<br>
+                    3. Hacker يبعت Fake ARP Reply لـ Bob يقول: "Alice's MAC is Hacker's MAC"<br>
+                    4. Bob يحدث الـ ARP Cache بتاعه<br>
+                    5. دلوقتي كل الـ traffic بين Alice و Bob يعدي على Hacker<br>
+                    6. Hacker يشوف كل حاجة ويعمل forward علشان مايكشفش نفسه
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">26</div>
+                <strong>إزاي نحمي نفسنا من ARP Poisoning؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    طرق الحماية:<br>
+                    - Static ARP entries: نحط الـ mappings يدوي (مش practical في شبكات كبيرة)<br>
+                    - ARP Inspection: الـ Switch يفحص ARP packets<br>
+                    - Port Security: ربط MAC بـ port معين<br>
+                    - Encryption: استخدام VPN أو HTTPS<br>
+                    - ARP monitoring tools: كشف التغييرات المشبوهة<br>
+                    - Dynamic ARP Inspection (DAI): في managed switches
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">27</div>
+                <strong>ليه ARP مافيهوش Authentication رغم إنه خطير؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - ARP اتصمم زمان (1982) قبل ما الأمان يكون أولوية<br>
+                    - في الوقت ده الشبكات كانت موثوق فيها وصغيرة<br>
+                    - إضافة authentication دلوقتي صعبة (backward compatibility)<br>
+                    - هيزود الـ overhead<br>
+                    - محتاجين نغير كل الأجهزة<br>
+                    - الحل: protocols أحدث زي IPv6 (uses NDP بدل ARP)
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 10 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 10: ليه Target MAC في ARP Request كله أصفار؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                السلايد قال إن Target Hardware Address في Request يكون unknown<br><br>
+                
+                <strong>التفصيل المخفي:</strong><br>
+                - مش بس unknown، بيتحط كله 00:00:00:00:00:00<br>
+                - ده placeholder علشان الـ packet structure تكون ثابتة<br>
+                - مش ممكن نسيبه فاضي لأن الـ packet له حجم ثابت<br>
+                - الأصفار معناها "لسه مش عارف"<br>
+                - بعض الأنظمة بتتجاهل الحقل ده في Request<br>
+                - لكن في Reply بيتملا بالقيمة الصحيحة
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">28</div>
+                <strong>ليه مش بنحط FF:FF:FF:FF:FF:FF في Target MAC بدل الأصفار؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    - FF:FF:FF:FF:FF:FF = Broadcast Address<br>
+                    - لو حطيناها في Target MAC في الـ ARP packet نفسه هيكون confusing<br>
+                    - Broadcast بنستخدمها في الـ Frame Header (Ethernet header)<br>
+                    - لكن في الـ ARP packet نفسه بنحط 00s علشان نقول "مش عارفين"<br>
+                    - ده separation واضح بين "بنبعت broadcast" و "مش عارفين العنوان"
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">29</div>
+                <strong>الـ Frame اللي حامل ARP Request، الـ Destination MAC فيه إيه؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    FF:FF:FF:FF:FF:FF (Broadcast)<br><br>
+                    
+                    <strong>مهم تفرق:</strong><br>
+                    - Ethernet Frame Header: Dest MAC = FF:FF:FF:FF:FF:FF<br>
+                    - ARP Packet جوه الـ Frame: Target MAC = 00:00:00:00:00:00<br>
+                    - دول مختلفين! واحد في Layer 2 header، والتاني في ARP packet نفسه
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 11 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 11: الفرق بين Same Network و Different Networks</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                Example 9.4 قال "The two hosts are on the same network"<br>
+                لكن مثال Alice و Bob كانوا على شبكات مختلفة<br><br>
+                
+                <strong>الفرق الحاسم:</strong><br>
+                - Same network: ARP مباشر للجهاز المستهدف<br>
+                - Different networks: ARP للـ Router (Default Gateway)<br>
+                - الجهاز بيعرف من الـ Subnet Mask لو نفس الشبكة ولا لأ<br>
+                - ده decision مهم جداً قبل ما نعمل ARP
+            </div>
+            
+            <div class="trick-box">
+                <strong>التريكاية الكبيرة:</strong><br>
+                السؤال: "Alice عايزة تبعت لـ Bob، بتعمل ARP لمين؟"<br>
+                - الإجابة تعتمد على: هل Bob في نفس الشبكة؟<br>
+                - نفس الشبكة: ARP لـ Bob مباشرة<br>
+                - شبكة مختلفة: ARP للـ Default Gateway<br>
+                - كتير من الطلبة بيفتكروا إن ARP دايماً للـ Destination، وده غلط!
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">30</div>
+                <strong>Alice (192.168.1.10/24) عايزة تبعت لـ Bob (192.168.1.20/24). ARP لمين؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    ARP لـ Bob مباشرة<br><br>
+                    
+                    <strong>السبب:</strong><br>
+                    - Alice: 192.168.1.10<br>
+                    - Bob: 192.168.1.20<br>
+                    - Subnet mask: /24 = 255.255.255.0<br>
+                    - Network portion: 192.168.1<br>
+                    - نفس الشبكة! → ARP مباشر
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">31</div>
+                <strong>Alice (192.168.1.10/24) عايزة تبعت لـ Bob (192.168.2.20/24). ARP لمين؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    ARP للـ Default Gateway (Router)<br><br>
+                    
+                    <strong>السبب:</strong><br>
+                    - Alice: 192.168.1.x<br>
+                    - Bob: 192.168.2.x<br>
+                    - شبكات مختلفة!<br>
+                    - Alice مش هتقدر توصل Bob مباشرة<br>
+                    - محتاجة Router<br>
+                    - تعمل ARP لـ MAC بتاع الـ Router
+                </div>
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">32</div>
+                <strong>إزاي الجهاز يعرف يعمل ARP لمين بالضبط؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    <strong>الخطوات:</strong><br>
+                    1. الجهاز عنده Destination IP<br>
+                    2. يعمل AND بين Destination IP والـ Subnet Mask بتاعه<br>
+                    3. يعمل AND بين IP بتاعه والـ Subnet Mask<br>
+                    4. لو النتيجتين زي بعض = Same network → ARP للـ Destination<br>
+                    5. لو مختلفين = Different network → ARP للـ Default Gateway<br><br>
+                    
+                    <strong>مثال:</strong><br>
+                    My IP: 192.168.1.10/24<br>
+                    Dest IP: 192.168.1.50<br>
+                    192.168.1.10 AND 255.255.255.0 = 192.168.1.0<br>
+                    192.168.1.50 AND 255.255.255.0 = 192.168.1.0<br>
+                    زي بعض → ARP direct
+                </div>
+            </div>
+        </div>
+
+        <!-- النقطة المخفية 12 -->
+        <div class="concept-section">
+            <div class="concept-title">النقطة المخفية 12: Router بيعمل إيه بالضبط مع الـ Frame؟</div>
+            
+            <div class="hidden-point">
+                <strong>ما بين السطور:</strong><br>
+                الـ Figures بتقول "removes data-link header" و "adds new header"<br><br>
+                
+                <strong>التفصيل الدقيق:</strong><br>
+                Router مابيعدلش الـ Frame، بيعمل complete decapsulation وإعادة encapsulation:<br>
+                1. يستقبل الـ Frame على Interface معين<br>
+                2. يفحص Destination MAC (لازم يكون ليه)<br>
+                3. يفحص FCS (Error checking)<br>
+                4. يشيل الـ Ethernet header كله<br>
+                5. يطلع IP Packet<br>
+                6. يشوف Destination IP<br>
+                7. يدور في Routing table<br>
+                8. يحدد Next hop<br>
+                9. يعمل ARP للـ Next hop<br>
+                10. يحط Ethernet header جديد<br>
+                11. يحسب FCS جديد<br>
+                12. يبعت الـ Frame على Interface التاني
+            </div>
+            
+            <div class="question-box">
+                <div class="question-number">33</div>
+                <strong>ليه Router مابيعدلش الـ MAC Address في نفس الـ Frame؟ ليه يشيله كله ويعمله من أول وجديد؟</strong>
+                <div class="answer-box">
+                    <strong>الإجابة:</strong><br>
+                    أسباب مهمة:<br>
+                    - الـ FCS محسوب على الـ Frame كله، لو غيرنا حاجة لازم نحسبه تاني<br>
+                    - ممكن الـ interface الداخل مختلف عن الخارج (Ethernet → WiFi مثلاً)<br>
+                    - الـ MTU ممكن يختلف، محتاجين fragmentation<br>
+                    - Layer separation: Router شغله Layer 3، فبيتعامل مع Packets مش Frames<br>
+                    - Clean design: كل layer تعمل شغلها كامل
+                </div>
+            </div>
+            
+            <div class
