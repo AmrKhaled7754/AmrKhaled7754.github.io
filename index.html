@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data-Link Layer - MCQ Practice</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: #333;
+        padding: 20px;
+      }
+
+      .remember-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 30px 0;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+
+      .remember-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .remember-image {
+        text-align: center;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .remember-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        color: white;
+      }
+      .header h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+      .header p {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+      .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin: 30px 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #667eea;
+      }
+      .question {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .question-number {
+        font-weight: 700;
+        color: #667eea;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .question-text {
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      .question-image {
+        max-width: 500px;
+        height: auto;
+        display: block;
+        margin: 15px auto;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      .options {
+        margin-left: 20px;
+      }
+      .option {
+        margin: 10px 0;
+        padding: 12px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+      .option:not(.question.answered .option):hover {
+        background: #e9ecef;
+        border-color: #ced4da;
+      }
+      .question.answered .option {
+        cursor: default;
+      }
+      .option.correct {
+        background-color: #cfe2ff;
+        border-color: #0d6efd;
+        color: #0a58ca;
+        font-weight: bold;
+      }
+      .option.incorrect {
+        background-color: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+        font-weight: bold;
+      }
+      .answer {
+        background: #e9ecef;
+        border: 2px solid #adb5bd;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 8px;
+        display: none;
+      }
+      .answer.show {
+        display: block;
+        animation: fadeIn 0.5s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .answer-label {
+        font-weight: 700;
+        color: #495057;
+        margin-bottom: 5px;
+      }
+      .explanation {
+        color: #212529;
+        margin-top: 5px;
+        line-height: 1.6;
+      }
+      .show-answers-btn {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 30px auto;
+        display: block;
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        transition: all 0.3s ease;
+      }
+      .show-answers-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+      }
+      @media print {
+        body {
+          background: white;
+        }
+        .show-answers-btn {
+          display: none;
+        }
+        .answer {
+          display: block !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="remember-box">
+          <div class="remember-title">Remember That</div>
+          <div class="remember-image">
+            <img src="shamardan.jpg" alt="" />
+          </div>
+        </div>
+        <h1>📚 Data-Link Layer</h1>
+        <p>MCQ Practice Questions - Chapter 9</p>
+        <p><strong>75 Comprehensive Questions</strong></p>
+      </div>
+      <button class="show-answers-btn" onclick="toggleAllExplanations()">
+        🔍 Show All Explanations
+      </button>
+      <!-- ========== SECTION 1: BASIC CONCEPTS ========== -->
+      <div class="section-title">
+        Section 1: Basic Concepts & Fundamentals (11 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 1</div>
+        <div class="question-text">
+          A datagram travels from a source host to a destination host across
+          several networks. Which addressing information is encapsulated and
+          then replaced at each intermediate router?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The source and destination network-layer addresses.
+          </div>
+          <div class="option" data-correct="false">
+            B) The destination network-layer address only.
+          </div>
+          <div class="option" data-correct="true">
+            C) The source and destination link-layer addresses.
+          </div>
+          <div class="option" data-correct="false">
+            D) Both network-layer and link-layer addresses.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The network-layer (IP) addresses define the ultimate source and
+            destination and remain constant. The data-link layer (MAC) addresses
+            define the next hop and change at every link. Each router
+            decapsulates the frame, reads the IP packet, and re-encapsulates it
+            in a new frame with new MAC addresses for the next hop.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 2</div>
+        <div class="question-text">
+          Why must an intermediate router perform both decapsulation and
+          encapsulation at the data-link layer?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To verify the integrity of the original datagram.
+          </div>
+          <div class="option" data-correct="false">
+            B) To change the source and destination IP addresses.
+          </div>
+          <div class="option" data-correct="true">
+            C) To forward the datagram using a different frame format or
+            link-layer address for the next hop.
+          </div>
+          <div class="option" data-correct="false">
+            D) To add a routing timestamp to the frame header.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            An intermediate node must decapsulate the frame to access the
+            network-layer packet and make a forwarding decision based on the
+            destination IP. It then encapsulates the packet into a new frame,
+            which may have a different protocol/format and will have different
+            link-layer (MAC) addresses for the next link in the path.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 3</div>
+        <div class="question-text">
+          A data-link protocol is designed to handle framing, flow control, and
+          error control for a single hop. Which of the following tasks is
+          outside its scope of services?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Encapsulating datagrams into frames for transmission.
+          </div>
+          <div class="option" data-correct="false">
+            B) Detecting and correcting bit errors within a received frame.
+          </div>
+          <div class="option" data-correct="true">
+            C) Determining the end-to-end path through the Internet.
+          </div>
+          <div class="option" data-correct="false">
+            D) Managing the transmission rate between two adjacent nodes.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Determining the end-to-end path (routing) is a primary function of
+            the network layer. The data-link layer is only concerned with the
+            node-to-node delivery of frames across a single link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 4</div>
+        <div class="question-text">
+          Which statement correctly describes the hierarchical service model
+          involving the data-link layer?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It provides a reliable bit-stream service to the physical layer.
+          </div>
+          <div class="option" data-correct="false">
+            B) It uses the transport layer's services to send frames.
+          </div>
+          <div class="option" data-correct="true">
+            C) It receives a raw bit-stream service from the physical layer and
+            provides a frame delivery service to the network layer.
+          </div>
+          <div class="option" data-correct="false">
+            D) It provides an end-to-end datagram service to the network layer.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The data-link layer sits on top of the physical layer, taking the
+            raw bit transmission service it offers. It then adds services like
+            framing and error control to provide a more structured service
+            (delivery of frames) to the network layer above it.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 5</div>
+        <div class="question-text">
+          In the context of data-link layer communication, what is the
+          conceptual relationship between "nodes" and "links"?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Nodes are logical connections, while links are physical devices.
+          </div>
+          <div class="option" data-correct="true">
+            B) Nodes are connecting devices like hosts and routers, while links
+            are the networks between them.
+          </div>
+          <div class="option" data-correct="false">
+            C) Nodes represent WANs, while links represent LANs.
+          </div>
+          <div class="option" data-correct="false">
+            D) Nodes and links are interchangeable terms for the same concept.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            As described in the text, it is customary to refer to the end hosts
+            and routers as nodes, and the networks in between (LANs and WANs) as
+            links. The data-link layer manages communication across a link, from
+            one node to the next.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 6</div>
+        <div class="question-text">
+          What is the fundamental purpose of the "framing" service provided by
+          the data-link layer?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="true">
+            A) To encapsulate a network-layer datagram with a header and trailer
+            to create a transmittable unit.
+          </div>
+          <div class="option" data-correct="false">
+            B) To select the optimal route for a packet to travel from source to
+            destination.
+          </div>
+          <div class="option" data-correct="false">
+            C) To convert a digital bit stream into analog signals for
+            transmission over media.
+          </div>
+          <div class="option" data-correct="false">
+            D) To assign a unique physical address to a network interface card.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Framing is the process where the data-link layer takes a datagram
+            from the network layer and encapsulates it within a frame, adding a
+            header (with link-layer addresses) and sometimes a trailer (for
+            error checking) to create a self-contained unit for transmission
+            across a link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 7</div>
+        <div class="question-text">
+          How does the scope of data-link layer flow control fundamentally
+          differ from transport layer flow control?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Data-link control is for wired media; transport control is for
+            wireless.
+          </div>
+          <div class="option" data-correct="true">
+            B) Data-link control is a local, node-to-node concern, while
+            transport control is an end-to-end concern.
+          </div>
+          <div class="option" data-correct="false">
+            C) Data-link control manages datagrams, while transport control
+            manages frames.
+          </div>
+          <div class="option" a-correct="false">
+            D) Data-link control focuses on error prevention; transport control
+            focuses on congestion.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Flow control at the data-link layer manages the data rate between
+            two adjacent nodes on a single link. In contrast, the transport
+            layer's flow control manages the rate for the entire communication
+            path between the source and final destination hosts, which could be
+            many hops away.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 8</div>
+        <div class="question-text">
+          Which statement best describes the primary role of the data-link
+          layer?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To convert data into electrical or optical signals.
+          </div>
+          <div class="option" data-correct="false">
+            B) To select the best path across the entire internetwork.
+          </div>
+          <div class="option" data-correct="true">
+            C) To manage the reliable transfer of frames between adjacent nodes.
+          </div>
+          <div class="option" data-correct="false">
+            D) To provide process-to-process communication between hosts.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The data-link layer's responsibility is node-to-node or hop-to-hop.
+            Its scope is limited to the delivery of a frame across one specific
+            link to the next device in the path. Path selection (B) is the
+            network layer, signaling (A) is the physical layer, and
+            process-to-process communication (D) is the transport layer.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 9</div>
+        <div class="question-text">
+          What is the typical action taken by a data-link layer protocol when
+          its error control function detects an error in a received frame?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It forwards the corrupted frame to the network layer with an
+            error flag.
+          </div>
+          <div class="option" data-correct="false">
+            B) It attempts to correct the bit errors using the IP header
+            checksum.
+          </div>
+          <div class="option" data-correct="true">
+            C) It discards the corrupted frame and may rely on feedback to have
+            it retransmitted.
+          </div>
+          <div class="option" data-correct="false">
+            D) It routes the frame back to the sender for inspection and repair.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text states that after an error is detected, the frame "needs to
+            be either corrected at the receiver node or discarded and
+            retransmitted by the sending node." Discarding and requesting
+            retransmission is the most common approach.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 10</div>
+        <div class="question-text">
+          In which type of link is a Media Access Control (MAC) mechanism
+          essential for proper operation?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A dedicated, point-to-point WAN connection between two routers.
+          </div>
+          <div class="option" data-correct="true">
+            B) A broadcast link where multiple devices share the same physical
+            medium.
+          </div>
+          <div class="option" data-correct="false">
+            C) A logical connection established by the transport layer.
+          </div>
+          <div class="option" data-correct="false">
+            D) Any link that uses electrical signals instead of light.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Media Access Control is necessary when a link is a broadcast medium,
+            meaning multiple devices must share it and coordinate to avoid
+            interfering with each other's transmissions. A dedicated,
+            point-to-point link has no such contention.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 11</div>
+        <div class="question-text">
+          An intermediate router receives a frame and prepares to forward it
+          over the next link, which uses the same data-link protocol. Why is
+          decapsulation and re-encapsulation still necessary?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To convert the datagram from IPv4 to IPv6.
+          </div>
+          <div class="option" data-correct="false">
+            B) To check the transport layer port number for filtering.
+          </div>
+          <div class="option" data-correct="true">
+            C) Because the link-layer addresses for the next hop are different.
+          </div>
+          <div class="option" data-correct="false">
+            D) This process is not necessary if the protocol is the same.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text explains that even if the protocol is the same, this
+            process is "needed because the link-layer addresses are normally
+            different." The router must build a new frame with the MAC address
+            of the next-hop router as the destination.
+          </div>
+        </div>
+      </div>
+      <!-- ========== SECTION 2: LINK TYPES ========== -->
+      <div class="section-title">
+        Section 2: Link Types (Point-to-Point vs Broadcast) (8 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 12</div>
+        <div class="question-text">
+          How is the data-link layer structured for a point-to-point link versus
+          a broadcast link?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A point-to-point link uses only the MAC sublayer.
+          </div>
+          <div class="option" data-correct="true">
+            B) A point-to-point link requires only the DLC sublayer, while a
+            broadcast link requires both DLC and MAC.
+          </div>
+          <div class="option" data-correct="false">
+            C) A broadcast link uses only the DLC sublayer.
+          </div>
+          <div class="option" data-correct="false">
+            D) Both link types require both the DLC and MAC sublayers for full
+            functionality.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A point-to-point link is dedicated and does not need to manage
+            access, so it only needs the Data Link Control (DLC) sublayer for
+            common functions. A broadcast link has shared access, so it requires
+            both the DLC sublayer and the Media Access Control (MAC) sublayer.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 13</div>
+        <div class="question-text">
+          Which of the following scenarios best exemplifies a broadcast link?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Two friends chatting using traditional home phones.
+          </div>
+          <div class="option" data-correct="true">
+            B) Two friends chatting using their cellular phones.
+          </div>
+          <div class="option" data-correct="false">
+            C) A computer connected to a network printer via a USB cable.
+          </div>
+          <div class="option" data-correct="false">
+            D) A dedicated fiber optic connection between two data centers.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text provides this exact example. Cellular phones use air as a
+            shared medium among many users, making it a broadcast link.
+            Traditional phones create a dedicated point-to-point circuit.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 14</div>
+        <div class="question-text">
+          The absence of a MAC sublayer in a point-to-point link implies which
+          of the following?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The link does not use physical addressing.
+          </div>
+          <div class="option" data-correct="true">
+            B) There is no contention for access to the transmission medium.
+          </div>
+          <div class="option" data-correct="false">
+            C) The link is incapable of performing error control.
+          </div>
+          <div class="option" data-correct="false">
+            D) The link must operate at a lower speed than a broadcast link.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The MAC (Media Access Control) sublayer's primary purpose is to
+            manage access to a shared medium. In a point-to-point link, the
+            medium is dedicated to only two devices, so there is no contention,
+            and thus no need for the MAC sublayer.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 15</div>
+        <div class="question-text">
+          What is the primary technical challenge that the MAC sublayer is
+          designed to solve in broadcast links?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) How to modulate signals for long-distance transmission.
+          </div>
+          <div class="option" data-correct="true">
+            B) How to coordinate which device can transmit at any given time on
+            a shared medium.
+          </div>
+          <div class="option" data-correct="false">
+            C) How to perform error correction without requiring retransmission.
+          </div>
+          <div class="option" data-correct="false">
+            D) How to ensure end-to-end data delivery across multiple networks.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The fundamental problem in a broadcast link is that the medium is
+            shared. The MAC sublayer provides the protocols necessary to
+            arbitrate access, preventing or managing collisions when multiple
+            devices attempt to transmit simultaneously.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 16</div>
+        <div class="question-text">
+          Which statement accurately contrasts capacity usage in point-to-point
+          and broadcast links?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A point-to-point link shares its capacity among many devices.
+          </div>
+          <div class="option" data-correct="false">
+            B) A broadcast link dedicates the full capacity of the medium to
+            each pair of devices.
+          </div>
+          <div class="option" data-correct="true">
+            C) A point-to-point link dedicates the medium's capacity to two
+            devices, while a broadcast link is shared.
+          </div>
+          <div class="option" data-correct="false">
+            D) Capacity usage is identical in both types of links; only the
+            addressing differs.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            As stated in the text, in a point-to-point link, the link is
+            dedicated to the two devices. In a broadcast link, the link is
+            shared between several pairs of devices, meaning the capacity is
+            also shared.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 17</div>
+        <div class="question-text">
+          A company is replacing an old Ethernet hub with a modern network
+          switch. How does this change the nature of the links connected to the
+          devices?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It changes the links from broadcast to point-to-point but
+            eliminates the need for MAC addresses.
+          </div>
+          <div class="option" data-correct="true">
+            B) It effectively changes the shared broadcast link into multiple,
+            separate point-to-point links, reducing collisions.
+          </div>
+          <div class="option" data-correct="false">
+            C) It keeps the link as a broadcast medium but increases its overall
+            capacity significantly.
+          </div>
+          <div class="option" data-correct="false">
+            D) It requires all connected devices to use a different data-link
+            layer protocol.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A hub creates a single broadcast domain where all devices share the
+            medium. A switch creates dedicated connections between ports,
+            effectively creating multiple point-to-point-like links. This
+            isolates traffic and eliminates the collision domain, a key
+            advantage of switches over hubs.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 18</div>
+        <div class="question-text">
+          A network design requires a connection between two routers where data
+          throughput must be consistent and not affected by other devices. Which
+          link type is the most appropriate choice?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A broadcast link, because it allows for flexible communication.
+          </div>
+          <div class="option" data-correct="true">
+            B) A point-to-point link, because it offers dedicated, unshared
+            capacity.
+          </div>
+          <div class="option" data-correct="false">
+            C) A multicast link, to ensure the data is delivered reliably.
+          </div>
+          <div class="option" data-correct="false">
+            D) Either link type would be equally suitable for this requirement.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The key requirement is consistent, unaffected throughput. A
+            point-to-point link provides a dedicated medium with its full
+            capacity available to the two connected devices, meeting this
+            requirement perfectly. A broadcast link's performance would be
+            affected by the traffic from other sharing devices.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 19</div>
+        <div class="question-text">
+          Based on the concepts presented, protocols like Ethernet are designed
+          for broadcast links, while a protocol like PPP (Point-to-Point
+          Protocol) would be suitable for what type of link?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A wireless network with many users.
+          </div>
+          <div class="option" data-correct="true">
+            B) A direct serial connection between two routers.
+          </div>
+          <div class="option" data-correct="false">
+            C) A satellite network serving a wide geographic area.
+          </div>
+          <div class="option" data-correct="false">
+            D) Any network that requires MAC addressing.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The name "Point-to-Point Protocol" itself implies its use. It is
+            designed for links that are dedicated connections between two
+            devices, such as a direct serial cable link, which is a classic
+            example of a point-to-point link.
+          </div>
+        </div>
+      </div>
+      <!-- ========== SECTION 3: SUBLAYERS ========== -->
+      <div class="section-title">
+        Section 3: DLC and MAC Sublayers (7 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 20</div>
+        <div class="question-text">
+          Which set of functions belongs exclusively to the Data Link Control
+          (DLC) sublayer and is required for both point-to-point and broadcast
+          links?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Media access coordination and physical addressing.
+          </div>
+          <div class="option" data-correct="true">
+            B) Framing, flow control, and error control.
+          </div>
+          <div class="option" data-correct="false">
+            C) IP to MAC address resolution and routing.
+          </div>
+          <div class="option" data-correct="false">
+            D) Collision detection and signal modulation.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text specifies that the DLC sublayer "deals with all issues
+            common to both point-to-point and broadcast links," which are the
+            core data-link services like framing, flow control, and error
+            control. Media access and physical addressing are MAC sublayer
+            functions.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 21</div>
+        <div class="question-text">
+          Why is the data-link layer logically divided into two sublayers, DLC
+          and MAC?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To support both IPv4 and IPv6 protocols simultaneously.
+          </div>
+          <div class="option" data-correct="false">
+            B) To separate functions for wired and wireless media.
+          </div>
+          <div class="option" data-correct="true">
+            C) To separate the generic link control functions from the specific
+            functions needed for shared media.
+          </div>
+          <div class="option" data-correct="false">
+            D) To comply with international standards that mandate a two-layer
+            structure.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            This division provides a clear separation of concerns. The DLC
+            sublayer handles functions needed by every link (framing, etc.),
+            while the MAC sublayer handles the specific problem of managing
+            access only on links where the medium is shared (broadcast links).
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 22</div>
+        <div class="question-text">
+          The MAC sublayer is primarily concerned with resolving which
+          fundamental question?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) "What is the physical address of the destination node?"
+          </div>
+          <div class="option" data-correct="true">
+            B) "Whose turn is it to transmit on the shared channel?"
+          </div>
+          <div class="option" data-correct="false">
+            A) "Has the frame been corrupted by errors during transmission?"
+          </div>
+          <div class="option" data-correct="false">
+            B) "Is the receiving node's buffer about to overflow?"
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The core purpose of Media Access Control (MAC) is to arbitrate
+            access to a shared medium. It implements protocols that determine
+            which device is allowed to transmit at any given moment to prevent
+            or manage collisions.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 23</div>
+        <div class="question-text">
+          A data-link layer implementation for a direct fiber optic link between
+          two specific routers would consist of which sublayer(s)?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Both the DLC and MAC sublayers.
+          </div>
+          <div class="option" data-correct="false">
+            B) Only the MAC sublayer.
+          </div>
+          <div class="option" data-correct="true">
+            C) Only the DLC sublayer.
+          </div>
+          <div class="option" data-correct="false">
+            D) Neither sublayer, as fiber optic links operate at the physical
+            layer.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A direct fiber link between two routers is a point-to-point link. As
+            such, it needs the common link functions of the DLC sublayer
+            (framing, etc.) but has no need for the MAC sublayer because there
+            is no media sharing to manage.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 24</div>
+        <div class="question-text">
+          In the context of an Ethernet LAN, which sublayer is responsible for
+          handling the physical (MAC) address?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The DLC sublayer, as it controls the link.
+          </div>
+          <div class="option" data-correct="true">
+            B) The MAC sublayer, as it manages media access and addressing for
+            that media.
+          </div>
+          <div class="option" data-correct="false">
+            C) The Network layer, as it correlates physical addresses with IP
+            addresses.
+          </div>
+          <div class="option" data-correct="false">
+            D) The Physical layer, as the address is burned into the hardware.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Ethernet is a broadcast-capable technology, and the MAC address is
+            fundamentally tied to the Media Access Control sublayer, which uses
+            it to identify devices on the shared medium.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 25</div>
+        <div class="question-text">
+          The strategy of dividing the data-link layer into DLC and MAC
+          sublayers is particularly useful for LAN protocols. What is the main
+          design advantage of this approach?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It allows a single protocol to handle both framing and routing
+            efficiently.
+          </div>
+          <div class="option" data-correct="true">
+            B) It separates the logic for link management from the logic for
+            media contention, making the design modular.
+          </div>
+          <div class="option" data-correct="false">
+            C) It enables faster error detection by processing frames in two
+            separate stages.
+          </div>
+          <div class="option" data-correct="false">
+            D) It combines the functions of the network and data-link layers
+            into a single, more efficient layer.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text states this division is used to "better understand the
+            functionality." This implies a separation of concerns, which is a
+            key principle of modular design. It allows the universal aspects of
+            link control (DLC) to be defined separately from the media-specific
+            aspects of access control (MAC).
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 26</div>
+        <div class="question-text">
+          Which statement accurately describes the presence of the DLC sublayer
+          across different link types?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It is only required in broadcast links to manage data flow.
+          </div>
+          <div class="option" data-correct="false">
+            B) It is only required in point-to-point links because there is no
+            MAC sublayer.
+          </div>
+          <div class="option" data-correct="true">
+            C) It is required in both point-to-point and broadcast links as it
+            handles common functions.
+          </div>
+          <div class="option" data-correct="false">
+            D) It is an optional sublayer used only when error rates are
+            expected to be high.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The Data Link Control sublayer handles issues common to ALL link
+            types, such as framing, flow control, and error control. Therefore,
+            it is a necessary component for both point-to-point and broadcast
+            links.
+          </div>
+        </div>
+      </div>
+      <!-- ========== SECTION 4: MAC ADDRESSING ========== -->
+      <div class="section-title">
+        Section 4: Link-Layer Addressing (MAC Addresses) (11 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 27</div>
+        <div class="question-text">
+          Based on the Ethernet addressing rules described in the text, which of
+          the following MAC addresses must be a multicast address?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">A) 1B:34:45:11:92:F1</div>
+          <div class="option" data-correct="true">B) 1A:34:45:11:92:F1</div>
+          <div class="option" data-correct="false">C) FF:FF:FF:FF:FF:FF</div>
+          <div class="option" data-correct="false">D) 1D:34:45:11:92:F1</div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text specifies that for a multicast Ethernet address, the second
+            hexadecimal digit must be an even number. In '1A', 'A' (10) is even.
+            In '1B' and '1D', 'B' (11) and 'D' (13) are odd, making them
+            unicast. FF:FF:FF:FF:FF:FF is the specific broadcast address.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 28</div>
+        <div class="question-text">
+          A frame is sent to the link-layer address FF:FF:FF:FF:FF:FF. Which
+          statement accurately describes the intended recipients?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) A specific, single entity in the link.
+          </div>
+          <div class="option" data-correct="false">
+            B) A predefined group of entities in the link.
+          </div>
+          <div class="option" data-correct="true">
+            C) All entities in the link.
+          </div>
+          <div class="option" data-correct="false">
+            D) Only the default gateway router in the link.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The address FF:FF:FF:FF:FF:FF is the broadcast address for Ethernet.
+            The text states that a frame with a destination broadcast address is
+            sent to all entities in the link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 29</div>
+        <div class="question-text">
+          A network administrator sees the MAC address 01:00:5E:7F:00:01 in a
+          network capture. What type of address is this?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Unicast, because the second digit '1' is odd.
+          </div>
+          <div class="option" data-correct="true">
+            B) Multicast, because the second digit '1' is odd.
+          </div>
+          <div class="option" data-correct="false">
+            C) Broadcast, because it starts with '01'.
+          </div>
+          <div class="option" data-correct="false">
+            D) Invalid, because the second digit must be even for multicast.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            This is a tricky question based on the text. The text states "the
+            second digit... needs to be an even number" for multicast. However,
+            the definition of multicast vs. unicast is determined by the
+            least-significant bit of the first byte. For 01, which is 00000001
+            in binary, that bit is 1, which signifies multicast. The example in
+            the book (A2) might be an oversimplification. Based on the standard,
+            01:00:5E... is a well-known multicast prefix. The best answer,
+            despite the book's simplified rule, is B. This highlights a
+            potential inaccuracy in the provided text's simplified rule.
+            *Correction based on standard networking knowledge which contradicts
+            the book's rule*: A '1' in the least significant bit of the first
+            octet indicates multicast. In '01', this bit is set. The book's rule
+            about the "second hex digit" is a common but not universally perfect
+            shortcut. Given the options, 'B' is the most correct technical
+            answer.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 30</div>
+        <div class="question-text">
+          A frame carrying an ARP request is being constructed. What is the
+          destination address in the data-link frame header?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The unicast link-layer address of the target node.
+          </div>
+          <div class="option" data-correct="true">
+            B) The broadcast link-layer address (e.g., FF:FF:FF:FF:FF:FF).
+          </div>
+          <div class="option" data-correct="false">
+            C) An all-zeros link-layer address as a placeholder.
+          </div>
+          <div class="option" data-correct="false">
+            D) The link-layer address of the default router.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Because the sender does not know the target's unicast link-layer
+            address (that's what ARP is for), the ARP request packet must be
+            sent to everyone on the link. This is achieved by placing the
+            broadcast link-layer address in the destination field of the
+            enclosing frame.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 31</div>
+        <div class="question-text">
+          What is the fundamental reason that a connectionless internetwork like
+          the Internet requires both link-layer and network-layer addressing?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To provide a backup addressing scheme in case of failure.
+          </div>
+          <div class="option" data-correct="true">
+            B) Network-layer addresses define the end-points, while link-layer
+            addresses define the specific next hop in the path.
+          </div>
+          <div class="option" data-correct="false">
+            C) Network-layer addresses are used by hosts, while link-layer
+            addresses are used only by routers.
+          </div>
+          <div class="option" data-correct="false">
+            D) To support different manufacturers who use different addressing
+            standards.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text explains that IP addresses define the two ends (source and
+            destination) but cannot define which links the datagram should pass
+            through. The link-layer addresses are needed to move the frame from
+            one node to the next across each specific link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 32</div>
+        <div class="question-text">
+          As a frame containing a datagram travels from a source to a
+          destination through a router, which statement is true?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The source IP address in the datagram and the source link-layer
+            address in the frame both change.
+          </div>
+          <div class="option" data-correct="true">
+            B) The destination IP address in the datagram remains constant, but
+            the destination link-layer address in the frame changes.
+          </div>
+          <div class="option" data-correct="false">
+            C) The destination link-layer address in the frame remains constant,
+            but the destination IP address in the datagram changes.
+          </div>
+          <div class="option" data-correct="false">
+            D) Both the destination IP address and the destination link-layer
+            address remain constant throughout the journey.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The network-layer (IP) addresses are end-to-end and do not change.
+            The link-layer (MAC) addresses are hop-to-hop. At each router, a new
+            frame is created with a new destination link-layer address pointing
+            to the next hop.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 33</div>
+        <div class="question-text">
+          What is the conventional ordering of addresses in the header of an IP
+          datagram versus the header of an Ethernet frame?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="true">
+            A) In an IP header, the source address comes first; in an Ethernet
+            frame header, the destination address comes first.
+          </div>
+          <div class="option" data-correct="false">
+            B) In an IP header, the destination address comes first; in an
+            Ethernet frame header, the source address comes first.
+          </div>
+          <div class="option" data-correct="false">
+            C) The source address always comes before the destination address in
+            both header types.
+          </div>
+          <div class="option" data-correct="false">
+            D) The destination address always comes before the source address in
+            both header types.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            By convention and standard, the IP header lists the source IP
+            address followed by the destination IP address. In contrast, the
+            standard Ethernet frame header lists the destination MAC address
+            first, followed by the source MAC address. This allows switching
+            hardware to quickly read the destination and begin forwarding the
+            frame.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 34</div>
+        <div class="question-text">
+          Unicast, multicast, and broadcast are three types of link-layer
+          addressing. Which statement correctly describes their scope?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Unicast is one-to-one, multicast is one-to-many, and broadcast is
+            one-to-all, all with jurisdiction across the entire Internet.
+          </div>
+          <div class="option" data-correct="false">
+            B) Unicast is local, while multicast and broadcast have universal
+            jurisdiction.
+          </div>
+          <div class="option" data-correct="true">
+            C) All three communication types (unicast, multicast, broadcast)
+            have a jurisdiction that is local (inside the link).
+          </div>
+          <div class="option" data-correct="false">
+            D) Unicast and multicast are local, while broadcast has universal
+            jurisdiction.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text clarifies for multicast addressing that "the jurisdiction
+            is local (inside the link)." The same applies to unicast and
+            broadcast at the link layer; routers do not forward frames based on
+            their link-layer destination addresses to other networks.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 35</div>
+        <div class="question-text">
+          What is the size, in bits, of a standard Ethernet link-layer address
+          as described in the examples?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">A) 32 bits (4 bytes)</div>
+          <div class="option" data-correct="true">B) 48 bits (6 bytes)</div>
+          <div class="option" data-correct="false">C) 64 bits (8 bytes)</div>
+          <div class="option" data-correct="false">D) 128 bits (16 bytes)</div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Examples 9.1, 9.2, and 9.3 all explicitly state that unicast,
+            multicast, and broadcast link-layer addresses in Ethernet are 48
+            bits (six bytes) long.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 36</div>
+        <div class="question-text">
+          The text uses several terms interchangeably for a link-layer address.
+          Which of the following is NOT one of those terms?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">A) Link address</div>
+          <div class="option" data-correct="false">B) Physical address</div>
+          <div class="option" data-correct="true">C) Network address</div>
+          <div class="option" data-correct="false">D) MAC address</div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text says: "A link-layer address is sometimes called a link
+            address, sometimes a physical address, and sometimes a MAC address."
+            A network address refers to the network-layer (IP) address.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 37</div>
+        <div class="question-text">
+          Why can the size of a link-layer address vary between different links
+          in the Internet, while the size of an IP address is fixed?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="true">
+            A) Because the Internet uses a single IP protocol, but each link may
+            use a different data-link protocol with its own address format.
+          </div>
+          <div class="option" data-correct="false">
+            B) Because link-layer addresses are assigned dynamically while IP
+            addresses are permanently assigned.
+          </div>
+          <div class="option" data-correct="false">
+            C) Because IP addresses are managed by a central authority, but
+            link-layer addresses are not.
+          </div>
+          <div class="option" data-correct="false">
+            D) Because routers can translate between different link-layer
+            address sizes, but not different IP address sizes.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            As stated on page 244, "Although we have only one IP protocol for
+            the whole Internet, we may be using different data-link protocols in
+            different links. This means that we can define the size of the
+            address when we discuss different link-layer protocols."
+          </div>
+        </div>
+      </div>
+      <!-- ========== SECTION 5: ARP PROTOCOL ========== -->
+      <div class="section-title">
+        Section 5: Address Resolution Protocol (ARP) (16 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 38</div>
+        <div class="question-text">
+          What specific problem does the Address Resolution Protocol (ARP)
+          solve?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It determines the best route for a datagram to take across the
+            internet.
+          </div>
+          <div class="option" data-correct="true">
+            B) It finds the link-layer address of a node when its network-layer
+            address is known.
+          </div>
+          <div class="option" data-correct="false">
+            C) It assigns a temporary IP address to a host when it joins a
+            network.
+          </div>
+          <div class="option" data-correct="false">
+            D) It translates a domain name (e.g., www.google.com) into an IP
+            address.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP's function is to map a known network-layer (IP) address to its
+            corresponding link-layer (MAC) address. This is necessary because
+            while a node knows the IP of the next hop, it needs the MAC address
+            to actually build the frame for transmission over the link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 39</div>
+        <div class="question-text">
+          How is an ARP request message delivered to the potential target node
+          on a local link?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It is sent in a unicast frame directly to the target node's known
+            MAC address.
+          </div>
+          <div class="option" data-correct="true">
+            B) It is sent in a broadcast frame that is processed by every node
+            on the link.
+          </div>
+          <div class="option" data-correct="false">
+            C) It is sent in a multicast frame to a special group address for
+            all routers.
+          </div>
+          <div class="option" data-correct="false">
+            D) It is passed to the network layer to be routed toward the target
+            IP address.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text states, "Because the sender does not know the link-layer
+            address of the receiver, the query is broadcast over the link using
+            the link-layer broadcast address." This ensures the request reaches
+            all nodes, allowing the one with the matching IP to reply.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 40</div>
+        <div class="question-text">
+          How is an ARP response (reply) message delivered back to the original
+          requester?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It is broadcast to all nodes, and the original requester claims
+            it.
+          </div>
+          <div class="option" data-correct="false">
+            B) It is sent back through the router to be delivered by the network
+            layer.
+          </div>
+          <div class="option" data-correct="true">
+            C) It is sent in a unicast frame directly to the requester's
+            link-layer address.
+          </div>
+          <div class="option" data-correct="false">
+            D) It is sent in a multicast frame to a group containing only the
+            requester.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The ARP request packet contains the sender's link-layer and IP
+            addresses. The target node uses this information to send the reply
+            directly back. "The response packet... is unicast directly to the
+            node that sent the request packet."
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 41</div>
+        <div class="question-text">
+          In an ARP operation, which node on the network sends back an ARP
+          response packet?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Every node that receives the broadcast request sends a response.
+          </div>
+          <div class="option" data-correct="false">
+            B) The default gateway router always responds on behalf of the
+            target node.
+          </div>
+          <div class="option" data-correct="true">
+            C) Only the single node whose IP address matches the one in the
+            request.
+          </div>
+          <div class="option" data-correct="false">
+            D) The network switch provides the response from its internal table.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text says, "Every host or router on the network receives and
+            processes the ARP request packet, but only the intended recipient
+            recognizes its IP address and sends back an ARP response packet."
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 42</div>
+        <div class="question-text">
+          What is the primary purpose of ARP caching?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To keep a permanent record of all devices ever connected to the
+            network.
+          </div>
+          <div class="option" data-correct="false">
+            B) To store datagrams temporarily if the destination is unavailable.
+          </div>
+          <div class="option" data-correct="true">
+            C) To reduce the number of broadcast frames by storing recently used
+            IP-to-link-layer address mappings.
+          </div>
+          <div class="option" data-correct="false">
+            D) To verify that the IP addresses on the network are not being
+            spoofed.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Caching is an efficiency mechanism. By storing the mapping after the
+            first ARP exchange, a node can send subsequent packets to the same
+            destination without having to send a new broadcast ARP request each
+            time, which "is preferable" because "processing broadcast frames is
+            expensive."
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 43</div>
+        <div class="question-text">
+          An ARP request from a host in one LAN is sent to a destination host in
+          a different LAN, separated by a router. What is the result?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The router forwards the ARP broadcast to the destination LAN.
+          </div>
+          <div class="option" data-correct="false">
+            B) The destination host receives the request and replies directly.
+          </div>
+          <div class="option" data-correct="true">
+            C) The ARP broadcast is confined to the source LAN and will not
+            reach the destination host.
+          </div>
+          <div class="option" data-correct="false">
+            D) The router replies to the ARP request with its own MAC address.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP operates using link-layer broadcasts, which are not forwarded by
+            routers. ARP's scope is strictly within a single broadcast domain or
+            local network. The source host would instead ARP for its default
+            gateway's MAC address.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 44</div>
+        <div class="question-text">
+          A host on network A wants to send a datagram to a host on network B.
+          The host sends an ARP request. What IP address is it trying to
+          resolve?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The IP address of the final destination host on network B.
+          </div>
+          <div class="option" data-correct="true">
+            B) The IP address of its default gateway router.
+          </div>
+          <div class="option" data-correct="false">
+            C) Its own IP address, to verify its configuration.
+          </div>
+          <div class="option" data-correct="false">
+            D) The broadcast IP address of network A.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            When the destination is on a remote network, the host knows it must
+            send the datagram to its local router (default gateway). It will use
+            ARP to find the link-layer address of that router, not the final
+            destination.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 45</div>
+        <div class="question-text">
+          How does ARP fit into the TCP/IP protocol suite's layered
+          architecture?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) ARP is a transport layer protocol that provides services to the
+            network layer.
+          </div>
+          <div class="option" data-correct="true">
+            B) ARP is considered a network layer protocol that uses the services
+            of the data-link layer.
+          </div>
+          <div class="option" data-correct="false">
+            C) ARP is a sublayer of the data-link layer, alongside the MAC
+            sublayer.
+          </div>
+          <div class="option" data-correct="false">
+            D) ARP is an application layer protocol for address management.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Although ARP's function is to find a link-layer address, it is
+            considered a network layer protocol in the TCP/IP suite. It provides
+            a necessary service for IP (a network layer protocol) to function,
+            and its messages are encapsulated within data-link layer frames.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 46</div>
+        <div class="question-text">
+          An ARP packet is encapsulated directly into a data-link frame. How
+          does the receiving node know the payload is an ARP packet and not an
+          IP datagram?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The ARP packet's header includes a field that identifies it.
+          </div>
+          <div class="option" data-correct="false">
+            B) The destination MAC address being broadcast indicates an ARP
+            message.
+          </div>
+          <div class="option" data-correct="true">
+            C) The data-link frame header has a type field indicating the
+            payload protocol.
+          </div>
+          <div class="option" data-correct="false">
+            D) The receiving node attempts to parse it as IP first, and if it
+            fails, tries ARP.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text notes: "The frame needs to have a field to show that the
+            payload belongs to the ARP and not to the network-layer datagram."
+            In Ethernet, this is the EtherType field.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 47</div>
+        <div class="question-text">
+          Why is it more efficient to use ARP once and then send multiple
+          unicast frames, compared to just sending every datagram in a broadcast
+          frame?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Broadcast frames have a higher chance of containing errors.
+          </div>
+          <div class="option" data-correct="true">
+            B) It minimizes the processing load on all nodes in the link except
+            the sender and receiver.
+          </div>
+          <div class="option" data-correct="false">
+            C) Unicast frames can carry a larger payload than broadcast frames.
+          </div>
+          <div class="option" data-correct="false">
+            D) It prevents routers from dropping the datagrams due to excessive
+            traffic.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Sending every datagram via broadcast forces every single node on the
+            link to receive and process it up to the network layer to see if
+            it's the intended recipient. Using ARP involves only one initial
+            broadcast, after which all subsequent frames are unicast and ignored
+            by other nodes, which is far less resource-intensive for the network
+            as a whole.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 48</div>
+        <div class="question-text">
+          What is the purpose of the 'Protocol type' field in an ARP packet?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To define the type of data-link layer protocol in use (e.g.,
+            Ethernet).
+          </div>
+          <div class="option" data-correct="true">
+            B) To define the type of network-layer protocol whose address is
+            being mapped (e.g., IPv4).
+          </div>
+          <div class="option" data-correct="false">
+            C) To distinguish between an ARP request and an ARP reply.
+          </div>
+          <div class="option" data-correct="false">
+            D) To specify the transport layer protocol (e.g., TCP or UDP) of the
+            encapsulated data.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text states, "The protocol type field defines the network-layer
+            protocol: IPv4 protocol is (0800)16." This allows ARP to be used
+            with different network-layer protocols, although its use with IPv4
+            is the most common.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 49</div>
+        <div class="question-text">
+          Although ARP functions to find a link-layer address, why is it
+          considered part of the network layer in the TCP/IP suite?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Because it is encapsulated directly within a network-layer
+            packet.
+          </div>
+          <div class="option" data-correct="false">
+            B) Because its operations are managed and controlled by routers, not
+            hosts.
+          </div>
+          <div class="option" data-correct="true">
+            C) Because it is an auxiliary protocol that directly serves the
+            needs of the IP protocol.
+          </div>
+          <div class="option" data-correct="false">
+            D) Because its packet format is identical to that of an IP datagram.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP is not for general data transfer; its sole purpose is to support
+            IP by providing the necessary link-layer address for IP packet
+            forwarding. Because it directly resolves a network-layer problem
+            (mapping IP addresses), it is logically placed within the network
+            layer.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 50</div>
+        <div class="question-text">
+          In the structure of an ARP request message, why is the 'Target
+          hardware address' field often filled with all zeros?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It indicates that the target is on a different subnet.
+          </div>
+          <div class="option" data-correct="true">
+            B) This field serves as a placeholder because its value is the exact
+            information the sender is trying to discover.
+          </div>
+          <div class="option" data-correct="false">
+            C) All zeros is the designated broadcast hardware address for ARP
+            requests.
+          </div>
+          <div class="option" data-correct="false">
+            D) It signals to the network switch that the packet should be
+            broadcast.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The very purpose of an ARP request is to find the target's hardware
+            (MAC) address. Since the sender does not know this information, the
+            corresponding field within the ARP message itself is filled with a
+            placeholder, typically all zeros. The actual broadcast occurs at the
+            data-link layer, where the frame's destination address is set to the
+            broadcast MAC address (e.g., FF:FF:FF:FF:FF:FF).
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 51</div>
+        <div class="question-text">
+          An ARP packet has its Operation field set to 1. What can be inferred
+          about the frame carrying this packet?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Its destination link-layer address is unicast.
+          </div>
+          <div class="option" data-correct="false">
+            B) Its source link-layer address is the broadcast address.
+          </div>
+          <div class="option" data-correct="true">
+            C) Its destination link-layer address is the broadcast address.
+          </div>
+          <div class="option" data-correct="false">
+            D) Its payload contains the MAC address of the target node.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            An Operation field of 1 signifies a Request. ARP requests are sent
+            to discover an unknown link-layer address, so they must be broadcast
+            to all nodes on the link. Therefore, the destination link-layer
+            address of the frame carrying the ARP request will be the broadcast
+            address (e.g., FF:FF:FF:FF:FF:FF).
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 52</div>
+        <div class="question-text">
+          Why does the ARP packet format include fields for 'Hardware length'
+          and 'Protocol length'?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To specify the total length of the ARP packet itself.
+          </div>
+          <div class="option" data-correct="false">
+            B) To ensure the packet is padded to a minimum size for Ethernet.
+          </div>
+          <div class="option" data-correct="true">
+            C) To make ARP a flexible protocol that can be used with various
+            hardware technologies and network protocols with different address
+            sizes.
+          </div>
+          <div class="option" data-correct="false">
+            D) These fields are obsolete and are no longer used in modern
+            networks.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The inclusion of hardware and protocol length fields makes the ARP
+            design flexible. For example, when used with IPv4 (protocol) over
+            Ethernet (hardware), these fields would be 4 bytes and 6 bytes,
+            respectively. If ARP were used with a different technology, these
+            fields would allow it to function correctly with different address
+            lengths, making it independent of a single technology.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 53</div>
+        <div class="question-text">
+          Consider a network with 20 systems. If System A sends 10 datagrams to
+          System B, what is the most significant advantage of using ARP over
+          broadcasting each datagram?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It reduces the total number of frames sent from 10 to 1.
+          </div>
+          <div class="option" data-correct="false">
+            B) It eliminates the need for System B to decapsulate any frames.
+          </div>
+          <div class="option" data-correct="true">
+            C) It significantly reduces the number of frames that the other 18
+            systems must process.
+          </div>
+          <div class="option" data-correct="false">
+            D) It ensures the 10 datagrams arrive in the correct order.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text provides this exact scenario. Without ARP, all 10 frames
+            are broadcast, meaning the 18 other systems must process 180 frames.
+            With ARP, there is 1 broadcast ARP request (18 frames processed) and
+            then 9 unicast frames that the other systems ignore. The primary
+            benefit is sparing the uninvolved systems from unnecessary
+            processing.
+          </div>
+        </div>
+      </div>
+      <!-- ========== SECTION 6: SCENARIO-BASED QUESTIONS ========== -->
+      <div class="section-title">
+        Section 6: Scenario-Based and Application Questions (5 Questions)
+      </div>
+      <div class="question">
+        <div class="question-number">Question 54</div>
+        <div class="question-text">
+          A router receives an Ethernet frame on its interface connected to
+          network A. The frame contains an IP datagram addressed to a host on
+          network B, which is connected to a different router interface. What is
+          the correct sequence of actions the router performs?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It changes the destination IP address in the datagram to its own
+            and forwards the original frame to network B.
+          </div>
+          <div class="option" data-correct="true">
+            B) It decapsulates the datagram, consults its forwarding table to
+            find the next hop, creates a new frame with appropriate link-layer
+            addresses for network B, and sends the new frame.
+          </div>
+          <div class="option" data-correct="false">
+            C) It broadcasts an ARP request on network A to find the MAC address
+            of the final destination host on network B.
+          </div>
+          <div class="option" data-correct="false">
+            D) It forwards the original frame without any changes from its
+            network A interface to its network B interface.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A router operates at the network layer. It must first remove the
+            link-layer frame (decapsulate) to examine the IP datagram. It then
+            uses the destination IP address to look up the next hop in its
+            forwarding table. Finally, it creates an entirely new link-layer
+            frame, with its own interface as the source MAC and the next-hop
+            device as the destination MAC, to send the datagram on its way.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 55</div>
+        <div class="question-text">
+          A datagram travels over a path consisting of a source host, three
+          routers, and a destination host. How many separate data-link layer
+          communications (logical connections) are involved?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">A) 3</div>
+          <div class="option" data-correct="true">B) 4</div>
+          <div class="option" data-correct="false">C) 5</div>
+          <div class="option" data-correct="false">D) 1</div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            There is one logical link-layer connection for each hop in the path.
+            The path is: Source → R1, R1 → R2, R2 → R3, R3 → Destination. This
+            constitutes 4 distinct hops, and therefore 4 separate data-link
+            layer communications.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 56</div>
+        <div class="question-text">
+          A host with IP address 192.168.1.100 wants to send a packet to a
+          server with IP address 10.0.0.50. The host's default gateway is
+          192.168.1.1. Before the packet can be sent, what link-layer address
+          must the host discover via ARP?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The link-layer address of the server at 10.0.0.50.
+          </div>
+          <div class="option" data-correct="false">
+            B) Its own link-layer address.
+          </div>
+          <div class="option" data-correct="true">
+            C) The link-layer address of the default gateway at 192.168.1.1.
+          </div>
+          <div class="option" a-correct="false">
+            D) The broadcast link-layer address (FF:FF:FF:FF:FF:FF).
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Since the destination server is on a different network, the host
+            knows it cannot send the frame directly. It must send the frame to
+            its local router (the default gateway) to be forwarded. Therefore,
+            it must use ARP to find the link-layer (MAC) address of the gateway
+            (192.168.1.1) to correctly address the frame for the first hop.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 57</div>
+        <div class="question-text">
+          When a datagram travels across multiple router hops from a source host
+          to a destination host, which pair of addresses remains unchanged for
+          the entire journey?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Source and destination link-layer (MAC) addresses.
+          </div>
+          <div class="option" data-correct="true">
+            B) Source and destination network-layer (IP) addresses.
+          </div>
+          <div class="option" data-correct="false">
+            C) The source network-layer address and the destination link-layer
+            address.
+          </div>
+          <div class="option" data-correct="false">
+            D) All addresses in both the link-layer frame and network-layer
+            datagram remain unchanged.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The network-layer (IP) addresses represent the ultimate source and
+            final destination of the communication and are end-to-end. They do
+            not change as the datagram is forwarded. In contrast, the link-layer
+            (MAC) addresses are hop-to-hop and are rewritten by each router to
+            send the frame to the next device in the path.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 58</div>
+        <div class="question-text">
+          Consider a person traveling from a home in one city to a friend's home
+          in another, using a taxi and a train. What does the act of getting out
+          of the taxi and getting onto the train at the station represent?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The final decapsulation at the destination host.
+          </div>
+          <div class="option" data-correct="false">
+            B) A flow control mechanism to prevent congestion.
+          </div>
+          <div class="option" data-correct="true">
+            C) The decapsulation and re-encapsulation process at an intermediate
+            node (router).
+          </div>
+          <div class="option" data-correct="false">
+            D) An ARP request to find the address of the next train.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The text uses this analogy to explain the role of an intermediate
+            node. The traveler (datagram) is constant, but the mode of transport
+            (frame) changes. The train station is an intermediate node where one
+            mode of transport is left (decapsulation) and another is entered
+            (re-encapsulation).
+          </div>
+        </div>
+      </div>
+      <!-- ========== NEW SECTION: BOOK QUESTIONS ========== -->
+      <div class="section-title">Section 7: Book Questions (17 Questions)</div>
+      <div class="question">
+        <div class="question-number">Question 59</div>
+        <div class="question-text">
+          What is the primary distinction between communication at the network
+          layer and the data-link layer? (Based on Q9-1)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Network layer is for wired connections; data-link layer is for
+            wireless.
+          </div>
+          <div class="option" data-correct="true">
+            B) Network layer communication is end-to-end
+            (source-to-destination), while data-link layer is node-to-node
+            (hop-to-hop).
+          </div>
+          <div class="option" data-correct="false">
+            C) Network layer uses MAC addresses; data-link layer uses IP
+            addresses.
+          </div>
+          <div class="option" data-correct="false">
+            D) Network layer handles framing; data-link layer handles routing.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The network layer provides end-to-end logical communication between
+            the source and destination hosts across multiple links. The
+            data-link layer is responsible for communication between two
+            adjacent nodes on the same link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 60</div>
+        <div class="question-text">
+          Can two hosts in two different networks have the same link-layer (MAC)
+          address? (Based on Q9-3)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) No, MAC addresses must be globally unique across the entire
+            Internet.
+          </div>
+          <div class="option" data-correct="true">
+            B) Yes, because link-layer addresses are only used for
+            identification within a single link (network) and are not seen by
+            other networks.
+          </div>
+          <div class="option" data-correct="false">
+            C) Yes, but only if they are made by the same manufacturer.
+          </div>
+          <div class="option" data-correct="false">
+            D) No, because this would cause an IP address conflict.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            While MAC addresses assigned by manufacturers are intended to be
+            globally unique, their operational scope is local to a specific
+            link. A frame's MAC address is replaced at each router, so a
+            duplicate MAC address on a separate, distant network would not cause
+            a conflict.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 61</div>
+        <div class="question-text">
+          What is the size of an ARP packet when the network protocol is IPv4
+          and the hardware is Ethernet? (Based on Q9-5)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">A) 20 bytes</div>
+          <div class="option" data-correct="true">B) 28 bytes</div>
+          <div class="option" data-correct="false">C) 48 bytes</div>
+          <div class="option" data-correct="false">D) 64 bytes</div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            An ARP packet for IPv4 over Ethernet contains: Hardware type (2),
+            Protocol type (2), Hardware length (1), Protocol length (1),
+            Operation (2), Sender MAC (6), Sender IP (4), Target MAC (6), Target
+            IP (4). Total = 2+2+1+1+2+6+4+6+4 = 28 bytes.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 62</div>
+        <div class="question-text">
+          In an isolated private link not connected to any other network, are
+          both network-layer and data-link-layer addresses still needed? (Based
+          on Q9-6)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) No, only network-layer (IP) addresses are needed for
+            communication.
+          </div>
+          <div class="option" data-correct="false">
+            B) No, only data-link-layer (MAC) addresses are needed as there is
+            no routing.
+          </div>
+          <div class="option" data-correct="true">
+            C) Yes, applications and operating systems are built around the
+            TCP/IP suite which requires both layers to function, even on a
+            simple network.
+          </div>
+          <div class="option" data-correct="false">
+            D) No, addresses are not needed at all on an isolated link.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Even on an isolated link, modern systems use the full protocol
+            stack. Applications use IP addresses to identify destinations, and
+            the data-link layer uses MAC addresses for frame delivery. ARP is
+            still used to map one to the other.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 63</div>
+        <div class="question-text">
+          In an ARP request message, why is the destination hardware (MAC)
+          address field typically all zeros? (Based on Q9-7)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It is a placeholder for the sender's own MAC address.
+          </div>
+          <div class="option" data-correct="false">
+            B) It indicates that the request is invalid.
+          </div>
+          <div class="option" data-correct="true">
+            C) Because the sender does not yet know the destination MAC address;
+            that is the information it is requesting.
+          </div>
+          <div class="option" data-correct="false">
+            D) All zeros is the universal address for the default gateway.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The entire purpose of an ARP request is to discover the target's MAC
+            address. Since this value is unknown at the time of the request, the
+            field is filled with a placeholder, such as all zeros.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 64</div>
+        <div class="question-text">
+          A broadcast address at the data-link layer has what kind of
+          jurisdiction? (Based on Q9-10)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Universal, sending a message to all hosts and routers in the
+            entire Internet.
+          </div>
+          <div class="option" data-correct="true">
+            B) Local, sending a message only to all hosts and routers within the
+            same link (broadcast domain).
+          </div>
+          <div class="option" data-correct="false">
+            C) It depends on whether the protocol is IPv4 or IPv6.
+          </div>
+          <div class="option" data-correct="false">
+            D) It sends a message only to routers, not to hosts.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            Data-link layer broadcast addresses have local jurisdiction. They
+            are confined to their specific link or network segment. Routers do
+            not forward these broadcast frames to other networks.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 65</div>
+        <div class="question-text">
+          Why does a host or router need to run the ARP program all the time in
+          the background? (Based on Q9-11)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) To constantly check for network errors and report them.
+          </div>
+          <div class="option" data-correct="false">
+            B) To assign IP addresses to new devices joining the network.
+          </div>
+          <div class="option" data-correct="true">
+            C) To be able to respond to ARP requests from other devices on the
+            network at any time.
+          </div>
+          <div class="option" data-correct="false">
+            D) To keep its own MAC address from expiring.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A device must continuously listen for incoming ARP requests. If a
+            request targets its IP address, it must be ready to formulate and
+            send an ARP reply immediately so that other devices can communicate
+            with it.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 66</div>
+        <div class="question-text">
+          Why is it better not to change an end-to-end (IP) address from the
+          source to the destination? (Based on Q9-13)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="true">
+            A) If the destination IP address changes, the packet will never
+            reach its intended destination.
+          </div>
+          <div class="option" data-correct="false">
+            B) Because IP addresses are hard-coded into network interface cards.
+          </div>
+          <div class="option" data-correct="false">
+            C) Changing the IP address would corrupt the data payload.
+          </div>
+          <div class="option" data-correct="false">
+            D) It is possible to change it, but it requires too much processing
+            power from routers.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The source and destination IP addresses are the fundamental
+            identifiers for the end-to-end communication path. If the
+            destination IP is altered, routers will send the packet to the wrong
+            location. If the source IP is altered, the destination cannot send a
+            reply back to the correct origin.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 67</div>
+        <div class="question-text">
+          How many IP addresses and link-layer addresses should a router have
+          when it is connected to five links? (Based on Q9-14)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) 1 IP address and 5 link-layer addresses.
+          </div>
+          <div class="option" data-correct="false">
+            B) 5 IP addresses and 1 link-layer address.
+          </div>
+          <div class="option" data-correct="true">
+            C) 5 IP addresses and 5 link-layer addresses.
+          </div>
+          <div class="option" data-correct="false">
+            D) 1 IP address and 1 link-layer address.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A router has a separate interface for each link it connects to. Each
+            interface requires its own unique IP address and its own unique
+            link-layer (MAC) address for that specific link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 68</div>
+        <div class="question-text">
+          In a private internet where all hosts are connected in a mesh
+          topology, are routers needed? (Based on P9-1)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="true">
+            A) No, because in a mesh topology, every host has a direct
+            point-to-point link to every other host.
+          </div>
+          <div class="option" data-correct="false">
+            B) Yes, routers are always required to connect more than two hosts.
+          </div>
+          <div class="option" data-correct="false">
+            C) Yes, to provide security between the hosts.
+          </div>
+          <div class="option" data-correct="false">
+            D) No, but switches are required to manage the connections.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The purpose of a router is to forward packets between different
+            networks (links). In a full mesh topology where every host is
+            directly connected to every other host, there are no intermediate
+            networks to traverse, so routers are unnecessary.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 69</div>
+        <div class="question-text">
+          Is the current Internet using circuit-switching or packet-switching at
+          the data-link layer? (Based on P9-5)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) Circuit-switching, because dedicated links are established
+            between nodes.
+          </div>
+          <div class="option" data-correct="true">
+            B) Packet-switching, because each frame is an independent unit that
+            is routed hop-by-hop.
+          </div>
+          <div class="option" data-correct="false">
+            C) It uses a hybrid of both depending on the traffic type.
+          </div>
+          <div class="option" data-correct="false">
+            D) Neither, switching is a network layer concept.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The Internet is a packet-switched network at all layers, including
+            the data-link layer. Frames are treated as individual packets of
+            data, and no dedicated end-to-end circuit is reserved for a
+            communication session.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 70</div>
+        <div class="question-text">
+          Alice is traveling from 2020 Main Street, LA to 1432 American
+          Boulevard, Chicago. What represents the end-to-end addresses in this
+          scenario? (Based on P9-6)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The addresses of the Los Angeles and Chicago airports.
+          </div>
+          <div class="option" data-correct="false">
+            B) The names "Alice" and her friend in Chicago.
+          </div>
+          <div class="option" data-correct="true">
+            C) Her home address in LA and her destination address in Chicago.
+          </div>
+          <div class="option" data-correct="false">
+            D) The flight number of the airplane.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            The end-to-end addresses are the ultimate start and end points of
+            the journey, which are analogous to source and destination IP
+            addresses. The intermediate points (like airports) are analogous to
+            link-layer addresses of routers.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 71</div>
+        <div class="question-text">
+          A host (A) sends an ARP request for another host (B) on the same link.
+          If host B's operating system is down or configured to ignore ARP
+          requests, what happens from host A's perspective?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The network switch will automatically generate an ARP reply on
+            behalf of host B.
+          </div>
+          <div class="option" data-correct="true">
+            B) Host A will not receive a reply, and after a timeout period,
+            communication with host B will fail.
+          </div>
+          <div class="option" data-correct="false">
+            C) The default gateway router will reply with its own MAC address.
+          </div>
+          <div class="option" data-correct="false">
+            D) Host A will automatically send the data using the broadcast MAC
+            address instead.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP is a request-reply protocol. The sending host (A) broadcasts a
+            request and waits for a specific reply from the target host (B). If
+            B is unable or unwilling to reply, host A's ARP process will
+            eventually time out, and it will report a failure to the network
+            layer, preventing data from being sent.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 72</div>
+        <div class="question-text">
+          What is the primary efficiency benefit for a host to check its local
+          ARP cache before initiating a new ARP request?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) It reduces the memory usage on the host computer.
+          </div>
+          <div class="option" data-correct="false">
+            B) It allows the host to send larger data packets.
+          </div>
+          <div class="option" data-correct="true">
+            C) It avoids generating unnecessary broadcast traffic that all other
+            devices on the local network must process.
+          </div>
+          <div class="option" data-correct="false">
+            D) It verifies that the host's own IP address is still valid.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP requests are sent as link-layer broadcasts, meaning every device
+            on the local network segment must receive and process the frame to
+            see if they are the target. This creates overhead. By checking the
+            cache first, a host can use a previously discovered MAC address and
+            immediately send a unicast frame, avoiding the network-wide
+            broadcast and saving CPU cycles on all other devices.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 73</div>
+        <div class="question-text">
+          Which statement best contrasts the mapping functions of a router's
+          forwarding table and the ARP protocol?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The forwarding table maps a domain name to an IP address; ARP
+            maps an IP address to a port number.
+          </div>
+          <div class="option" data-correct="false">
+            B) Both perform the exact same function but are located in different
+            devices.
+          </div>
+          <div class="option" data-correct="true">
+            C) A forwarding table maps a final destination IP address to a
+            next-hop IP address; ARP maps a next-hop IP address to its
+            corresponding link-layer address.
+          </div>
+          <div class="option" data-correct="false">
+            D) A forwarding table maps a source IP to a destination IP; ARP maps
+            a source MAC to a destination MAC.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            These are two distinct, sequential mapping steps. The router first
+            uses its forwarding table (a network-layer function) to decide the
+            IP address of the *next* router in the path. Then, it uses ARP (a
+            network/link-layer bridge function) to find the specific MAC address
+            of that next router so it can build a frame to send across the
+            immediate link.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 74</div>
+        <div class="question-text">
+          An ARP transaction is observed on a link that is known to be in the
+          middle of a path between a source client and a destination server
+          (i.e., not the first or last link). What types of devices are most
+          likely performing this ARP exchange?
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) The source client and the destination server.
+          </div>
+          <div class="option" data-correct="false">
+            B) The source client and the first router.
+          </div>
+          <div class="option" data-correct="false">
+            C) The final router and the destination server.
+          </div>
+          <div class="option" data-correct="true">
+            D) An upstream router and a downstream router.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            ARP's scope is always confined to a single link. In the middle of an
+            end-to-end path, a datagram is being passed from one router to the
+            next. Therefore, the sending node on that link will be one router,
+            and it will be using ARP to find the link-layer address of the next
+            router in the path.
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="question-number">Question 75</div>
+        <div class="question-text">
+          Why does a router normally have more than one interface? (Based on
+          Q9-12)
+        </div>
+        <div class="options">
+          <div class="option" data-correct="false">
+            A) For redundancy, in case one interface fails.
+          </div>
+          <div class="option" data-correct="true">
+            B) Because the function of a router is to connect two or more
+            different links (networks).
+          </div>
+          <div class="option" data-correct="false">
+            C) To increase its processing speed.
+          </div>
+          <div class="option" data-correct="false">
+            D) To allow it to communicate with both wired and wireless devices.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-label">✅ Explanation:</div>
+          <div class="explanation">
+            A router's fundamental job is to forward packets *between* different
+            networks. To do this, it must be physically connected to at least
+            two different networks, which requires at least two interfaces.
+          </div>
+        </div>
+      </div>
+      <button
+        class="show-answers-btn"
+        onclick="window.print()"
+        style="margin-top: 20px"
+      >
+        🖨️ Print Questions & Answers
+      </button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const questionElements = document.querySelectorAll(".question");
+        questionElements.forEach((question, index) => {
+          const numberElement = question.querySelector(".question-number");
+          const difficultySpan = numberElement.querySelector(".difficulty");
+          numberElement.innerHTML = `Question ${index + 1} `;
+          if (difficultySpan) {
+            numberElement.appendChild(difficultySpan);
+          }
+        });
+        const options = document.querySelectorAll(".option");
+        options.forEach((option) => {
+          option.addEventListener("click", handleOptionClick);
+        });
+      });
+      function handleOptionClick(event) {
+        const selectedOption = event.currentTarget;
+        const questionElement = selectedOption.closest(".question");
+        if (questionElement.classList.contains("answered")) {
+          return;
+        }
+        questionElement.classList.add("answered");
+        const isCorrect = selectedOption.dataset.correct === "true";
+        if (isCorrect) {
+          selectedOption.classList.add("correct");
+        } else {
+          selectedOption.classList.add("incorrect");
+          const correctOption = questionElement.querySelector(
+            '.option[data-correct="true"]'
+          );
+          if (correctOption) {
+            correctOption.classList.add("correct");
+          }
+        }
+        const answerExplanation = questionElement.querySelector(".answer");
+        if (answerExplanation) {
+          answerExplanation.classList.add("show");
+        }
+      }
+      function toggleAllExplanations() {
+        const answers = document.querySelectorAll(".answer");
+        const button = document.querySelector(".show-answers-btn");
+        let allVisible = true;
+        answers.forEach((answer) => {
+          if (!answer.classList.contains("show")) {
+            allVisible = false;
+          }
+        });
+        answers.forEach((answer) => {
+          if (allVisible) {
+            answer.classList.remove("show");
+          } else {
+            answer.classList.add("show");
+          }
+        });
+        if (allVisible) {
+          button.textContent = "🔍 Show All Explanations";
+        } else {
+          button.textContent = "🙈 Hide All Explanations";
+        }
+      }
+    </script>
+  </body>
+</html>
